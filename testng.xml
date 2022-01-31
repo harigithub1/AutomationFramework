@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Myntra-Android-Test-Suite" parallel="tests" thread-count="2">
+
+    <test name="S20">
+        <parameter name="udid" value="RZ8NA0RM5GK"/>
+        <parameter name="platformVersion" value="12"/>
+        <classes>
+            <class name="cucumber.tests.TestRunner"/>
+        </classes>
+    </test>
+
+    <test name="A71">
+        <parameter name="udid" value="RZ8NC07WQNP"/>
+        <parameter name="platformVersion" value="11"/>
+        <classes>
+            <class name="cucumber.tests.TestRunner"/>
+        </classes>
+    </test>
+
+</suite>
