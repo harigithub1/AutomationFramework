@@ -10,21 +10,21 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class JobScreen extends BaseScreen{
-    public JobScreen(AndroidDriver<MobileElement> driver) {
+public class JobPage extends BasePage {
+    public JobPage(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
 
     /**Mobile Elements*/
-    By toolBarTitleBy   = By.xpath("//*[@text='Explore']");
+    By ExploreTitleBy   = By.xpath("//*[@text='Explore']");
 
     /**Actions*/
-    public void assertToolBarTitleIsExpected() {
-        String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(toolBarTitleBy)).getText();
+    public void assertExploreTitleIsExpected() {
+        String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(ExploreTitleBy)).getText();
         try {
-            Thread.sleep(3000);
+          //  Thread.sleep(3000);
             extentTest.log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         Assert.assertTrue(toolBarTitleStr.contains("Explore"));

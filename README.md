@@ -3,27 +3,31 @@
 Cucumber-Java-Maven based Automation framework for Mobile App testing.
 ## Features:
 - Parallel Testing
-- Supports both Android and iOS
+- Supports both Android and iOS 
+
+##Setup for Cloud Execution
+- Browserstack
+- 
 
 ##Setup For Local Execution
-###Softwares:
+- ###Softwares:
 - JDK
 - Android Studio
 - Appium
 - IntelliJ
-###Set Env variables in Windows machine:
+- ###Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
 - Path with %JAVA_HOME%\bin
 
-###Set Env variables in Appium Server:
+- ###Set Env variables in Appium Server:
 - ANDROID_HOME with C:\Users\mhari\AppData\Local\Android\Sdk
 - JAVA_HOME with C:\Program Files (x86)\Java\jre1.8.0_311
 
-###Set Env variables in Jenkins Agent:
+- ###Set Env variables in Jenkins Agent:
 - MAVEN_HOME with C:\apache-maven-3.6.1
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
 
-### ADB
+- ### ADB
 - With Android Studio ADB will be installed automatically.
 - Navigate to C:\Users\mhari\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb`` and then type `adb devices` to view the list of devices connected and their IDs
 ## GitHub

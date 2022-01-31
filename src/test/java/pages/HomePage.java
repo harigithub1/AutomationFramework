@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 
-public class CandidateMainScreen extends BaseScreen {
-    public CandidateMainScreen(AndroidDriver<MobileElement> driver) {
+public class HomePage extends BasePage {
+    public HomePage(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -19,7 +19,10 @@ public class CandidateMainScreen extends BaseScreen {
     By allowWhenUsingBy = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     By jobsBy           = By.id("com.isinolsun.app:id/rootRelativeView");
     By profileIconBy    = By.xpath("//android.widget.LinearLayout[4]/android.widget.ImageView");
-    By searchingJobBy = By.xpath("//*[@text='Studio']");
+    By StudioBy = By.xpath("//*[@text='Studio']");
+    By ProfileBy = By.xpath("//*[@text='Profile']");
+    By HomeBy = By.xpath("//*[@text='Home']");
+
     /**Actions*/
     public void allowNotification() {
         if (wait.until(ExpectedConditions.visibilityOfElementLocated(allowWhenUsingBy)).isDisplayed()) {
@@ -32,14 +35,30 @@ public class CandidateMainScreen extends BaseScreen {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(jobsBy)).get(index).click();
         Thread.sleep(4000);
     }
-    public void clickIamSearchingJob2() {
-        waitAndClick(searchingJobBy);
+    public void clickStudio() {
+        waitAndClick(StudioBy);
         try {
-            Thread.sleep(3000);
+            //Thread.sleep(3000);
             extentTest.log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
+        }
+    }
+
+    public void clickProfile() {
+        waitAndClick(ProfileBy);
+        try {
+            extentTest.log(Status.INFO, "Clicked Profile", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickHome() {
+        waitAndClick(HomeBy);
+        try {
+            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -4,8 +4,8 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
-public class SplashScreen extends BaseScreen {
-    public SplashScreen(AndroidDriver<MobileElement> driver) {
+public class SplashPage extends BasePage {
+    public SplashPage(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
 

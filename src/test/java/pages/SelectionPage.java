@@ -8,23 +8,21 @@ import org.openqa.selenium.By;
 
 import java.io.IOException;
 
-public class SelectionScreen extends BaseScreen {
-    public SelectionScreen(AndroidDriver<MobileElement> driver) {
+public class SelectionPage extends BasePage {
+    public SelectionPage(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
 
     /**Mobile Elements*/
-    By searchingJobBy = By.xpath("//*[@text='Categories']");
+    By CategoriesBy = By.xpath("//*[@text='Categories']");
 
     /**Actions*/
-    public void clickIamSearchingJob() {
-        waitAndClick(searchingJobBy);
+    public void clickCategories() {
+        waitAndClick(CategoriesBy);
         try {
-            Thread.sleep(3000);
+//            Thread.sleep(3000);
             extentTest.log(Status.INFO, "Clicked Categories", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

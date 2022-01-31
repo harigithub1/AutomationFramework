@@ -9,11 +9,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseScreen extends CucumberListener {
+public class BasePage extends CucumberListener {
     protected AndroidDriver<MobileElement> driver;
     protected WebDriverWait                wait;
 
-    public BaseScreen(AndroidDriver<MobileElement> driver) {
+    public BasePage(AndroidDriver<MobileElement> driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
     }
