@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
 
-public class HomePage extends BasePage {
-    public HomePage(AndroidDriver<MobileElement> driver) {
+public class MyntraHomePage extends BasePage {
+    public MyntraHomePage(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -22,6 +22,8 @@ public class HomePage extends BasePage {
     By StudioBy = By.xpath("//*[@text='Studio']");
     By ProfileBy = By.xpath("//*[@text='Profile']");
     By HomeBy = By.xpath("//*[@text='Home']");
+    By ExploreBy = By.xpath("//*[@text='Explore']");
+    By CategoriesBy = By.xpath("//*[@text='Categories']");
 
     /**Actions*/
     public void allowNotification() {
@@ -58,6 +60,32 @@ public class HomePage extends BasePage {
         waitAndClick(HomeBy);
         try {
             extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickExplore() {
+        waitAndClick(ExploreBy);
+        try {
+            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickCategories() {
+        waitAndClick(CategoriesBy);
+        try {
+            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void userOnHomePage() {
+        try {
+            extentTest.log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }

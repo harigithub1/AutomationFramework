@@ -7,24 +7,24 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilities.ThreadLocalDriver;
 
-public class HomePageStepDefinitions extends BaseSteps {
+public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @Before
     public void setupLoginSteps() {
         setupScreens(ThreadLocalDriver.getTLDriver());
     }
 
-    @Given("User is on home page and taps Categories")
+    @Given("User is on home page One")
     public void userisonhomepageandtapsCategories() {
        // splashScreen.skipSplashScreen();
-        selectionScreen.clickCategories();
+        myntraHomePage.userOnHomePage();
 //        candidateMainScreen.allowNotification();
     }
 
-    @When("User clicks Studio {int}")
+    @When("User clicks Studio {int} Three")
     public void userclicksStudio(int index) {
     //    candidateMainScreen.clickToJob(index);
-        homePage.clickStudio();
+        myntraHomePage.clickStudio();
 
     }
 
@@ -33,14 +33,24 @@ public class HomePageStepDefinitions extends BaseSteps {
         jobScreen.assertExploreTitleIsExpected();
     }
 
-    @When("User clicks on Profile")
+    @When("User clicks on Profile Five")
     public void userClicksOnProfile() {
-        homePage.clickProfile();
+        myntraHomePage.clickProfile();
 
     }
 
-    @And("User clicks on Home")
+    @And("User clicks on Home Six")
     public void userClicksOnHome() {
-        homePage.clickHome();
+        myntraHomePage.clickHome();
+    }
+
+    @When("User clicks on Explore Four")
+    public void userClicksOnExplore() {
+        myntraHomePage.clickExplore();
+    }
+
+    @When("User clicks on Categories Two")
+    public void userClicksOnCategories() {
+        myntraHomePage.clickCategories();
     }
 }
