@@ -12,11 +12,14 @@ import utilities.ExtentManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
+import utilities.ConfigReader;
 
 import static utilities.ThreadLocalDriver.getTLDriver;
 
 public class CucumberListener extends ThreadLocal implements ConcurrentEventListener {
-
+    ConfigReader configReader = new ConfigReader();
     public static ExtentReports extent = ExtentManager.createInstance();
 
     public static ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
@@ -26,15 +29,10 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
         return ((TakesScreenshot) getTLDriver()).getScreenshotAs(OutputType.BASE64);
     }
 
-    public static String getCurrentDateAndTime() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        String str = dateFormat.format(date).replace(" ", "_").replaceAll("/", "_").replaceAll(":", "_");
-        return str;
-    }
 
     @Override
     public void setEventPublisher(EventPublisher publisher) {
+
         publisher.registerHandlerFor(TestRunStarted.class, eventHandlerTestRunStarted);
         publisher.registerHandlerFor(TestCaseStarted.class, eventHandlerTestCaseStarted);
         publisher.registerHandlerFor(TestStepStarted.class, eventHandlerTestStepStarted);
@@ -51,11 +49,15 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public EventHandler<TestCaseStarted> eventHandlerTestCaseStarted = new EventHandler<TestCaseStarted>() {
         public void receive(TestCaseStarted event) {
             String testScenarioName = event.getTestCase().getName();
-           String deviceName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("deviceModel");
-            // String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceModel"));
-            String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
-            ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
-            ptest.set(extentTest);
+            if (configReader.config().getProperty("isParallel").equals("true")) {
+                String deviceName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("deviceModel");
+                String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+                ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+                ptest.set(extentTest);
+            } else {
+                ExtentTest extentTest = extent.createTest(testScenarioName);
+                ptest.set(extentTest);
+            }
         }
     };
     private EventHandler<TestStepStarted> eventHandlerTestStepStarted = new EventHandler<TestStepStarted>() {
@@ -72,8 +74,8 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
             if (event.getTestStep() instanceof PickleStepTestStep) {
                 if (event.getResult().getStatus().toString().equalsIgnoreCase("passed")) {
                     test.get().pass("Test passed");
-                } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")){
-                    test.get().fail("Test failed: "+event.getResult().getError());
+                } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
+                    test.get().fail("Test failed: " + event.getResult().getError());
                 } else {
                     test.get().pass("Test skipped");
                 }
@@ -87,7 +89,7 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     };
     private EventHandler<TestRunFinished> eventHandlerTestRunFinished = new EventHandler<TestRunFinished>() {
         public void receive(TestRunFinished event) {
-            }
+        }
 
     };
 }

@@ -7,20 +7,29 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.openqa.selenium.Platform;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExtentManager {
     private static ExtentReports extent;
     private static Platform platform;
-    private static String reportFileName = "ExtentReport.html";
+    private static String reportFileName = "ExtentReport";
     private static String macPath = System.getProperty("user.dir")+ "/TestReport";
     private static String windowsPath = System.getProperty("user.dir")+ "\\target\\extent-reports";
     private static String macReportFileLoc = macPath + "/" + reportFileName;
-    private static String winReportFileLoc = windowsPath + "\\" + reportFileName;
+    private static String winReportFileLoc = windowsPath + "\\" + reportFileName+"_"+getCurrentDateAndTime()+".html";
 
     public static ExtentReports getInstance() {
         if (extent == null)
             createInstance();
         return extent;
+    }
+    public static String getCurrentDateAndTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss:SSS");
+        Date date = new Date();
+        String str = dateFormat.format(date).replace(" ", "_").replaceAll("/", "_").replaceAll(":", "_");
+        return str;
     }
 
     //Create an extent report instance

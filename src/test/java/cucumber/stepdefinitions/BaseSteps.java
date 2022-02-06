@@ -17,6 +17,5 @@ public class BaseSteps {
         myntraHomePage = new MyntraHomePage(driver);
         jobScreen = new JobPage(driver);
         bsAppScreen = new WikiHomePage(driver);
-
     }
 }
