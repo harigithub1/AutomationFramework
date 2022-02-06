@@ -3,7 +3,8 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
 
 ##To Run Tests
 - Start appium server at 0.0.0.0 at port 4723
-- 
+- For parallel test using Forks, create multiple JUnit runners and add them in pom.xml file by using the ``ParallelRunner`` keyword. (can be executed parallelly based on tags)
+- For parallel test using MultiThreads use TestNG.xml file and run the xml file. (executing based on tags is not implemented yet)
 
 ## Notes for Browserstack execution mode:
 - Change devices in TestNG.xml
