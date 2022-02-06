@@ -21,7 +21,7 @@ public class SelectionPage extends BasePage {
         waitAndClick(CategoriesBy);
         try {
 //            Thread.sleep(3000);
-            extentTest.log(Status.INFO, "Clicked Categories", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Categories", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }

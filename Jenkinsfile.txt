@@ -8,4 +8,11 @@ node ('jenkins-agent-name'){
     stage('test'){
         bat '''mvn test'''
     }
+publishHTML([allowMissing: false,
+alwaysLinkToLastBuild: true,
+keepAll: false,
+reportDir: '',
+reportFiles: 'target/extent-reports/ExtentReport.html',
+reportName: 'Test Report',
+reportTitles: ''])
 }

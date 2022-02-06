@@ -19,21 +19,21 @@ public class DesiredCapabilitiesUtil{
         4. app
         */
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-//        desiredCapabilities.setCapability("udid", deviceName);
-      desiredCapabilities.setCapability("deviceName", deviceName);
+        desiredCapabilities.setCapability("udid", deviceName);
+//      desiredCapabilities.setCapability("deviceName", deviceName);
         desiredCapabilities.setCapability("platformVersion", platformVersion);
         desiredCapabilities.setCapability("platformName", "Android");
-//        desiredCapabilities.setCapability("appPackage", "com.myntra.android");
-//        desiredCapabilities.setCapability("appActivity", "com.myntra.android.SplashActivity");
-        desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
-        desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
+        desiredCapabilities.setCapability("appPackage", "com.myntra.android");
+        desiredCapabilities.setCapability("appActivity", "com.myntra.android.SplashActivity");
+//        desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
+//        desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
         desiredCapabilities.setCapability("skipUnlock", "true");
         desiredCapabilities.setCapability("noReset", "false");
-      desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
-        desiredCapabilities.setCapability("browserstack.video","false");
-        desiredCapabilities.setCapability("project","Mobile Automation Project");
-        desiredCapabilities.setCapability("build","Mobile Automation Build");
-        desiredCapabilities.setCapability("name","Mobile Automation Name");
+//      desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+//        desiredCapabilities.setCapability("browserstack.video","false");
+//        desiredCapabilities.setCapability("project","Mobile Automation Project");
+//        desiredCapabilities.setCapability("build","Mobile Automation Build");
+//        desiredCapabilities.setCapability("name","Mobile Automation Name");
 
 
 

@@ -1,5 +1,10 @@
 # Mobile Automation Testing Framework
 Cucumber-Java-Maven based Automation framework for Mobile App testing.
+
+##To Run Tests
+- Start appium server at 0.0.0.0 at port 4723
+- 
+
 ## Notes for Browserstack execution mode:
 - Change devices in TestNG.xml
 - Change Thread count in TestNG.xml
@@ -45,6 +50,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
   - Navigate to Global Tool Configuration
   - Scroll down and click on Add Maven
   - Provide name as something like Maven3, Select install automaticall checkbox, select version in the Install From Apache dropdown and Save
+- #### Step4: Creating jenkins job using pipeline
 
 ## ADB
 - With Android Studio ADB will be installed automatically.

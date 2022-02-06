@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 @CucumberOptions(
         monochrome = true,
-        tags = "@BrowserStack",
+        tags = "@Local",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,

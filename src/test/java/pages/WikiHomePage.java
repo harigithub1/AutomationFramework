@@ -42,7 +42,7 @@ public class WikiHomePage extends BasePage {
         waitAndClick(searchElementBy);
         try {
             //Thread.sleep(3000);
-            extentTest.log(Status.INFO, "Clicked searchElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked searchElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class WikiHomePage extends BasePage {
     public void clickinsertTextElementBy() {
         waitAndClick(insertTextElementBy);
         try {
-            extentTest.log(Status.INFO, "Clicked insertTextElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked insertTextElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,7 +60,7 @@ public class WikiHomePage extends BasePage {
     public void clickHome() {
         waitAndClick(HomeBy);
         try {
-            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class WikiHomePage extends BasePage {
     public void clickListElement() {
         waitAndClick(ListBy);
         try {
-            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class WikiHomePage extends BasePage {
     public void clickHistoryElement() {
         waitAndClick(HistoryBy);
         try {
-            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +87,7 @@ public class WikiHomePage extends BasePage {
     public void clickNearbyElement() {
         waitAndClick(NearbyBy);
         try {
-            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,7 +96,7 @@ public class WikiHomePage extends BasePage {
     public void clickExploreElement() {
         waitAndClick(ExploreBy);
         try {
-            extentTest.log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,7 +110,7 @@ public class WikiHomePage extends BasePage {
         String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(InTheNewsTitleBy)).getText();
         try {
             //  Thread.sleep(3000);
-            extentTest.log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -120,7 +120,7 @@ public class WikiHomePage extends BasePage {
     public void userOnWikiHomePage() {
         try {
             //  Thread.sleep(3000);
-            extentTest.log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
         } catch (IOException e) {
             e.printStackTrace();
         }

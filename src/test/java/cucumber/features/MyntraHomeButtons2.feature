@@ -1,4 +1,4 @@
-@Myntra
+@Local
   Feature: Myntra Home page buttons F2.
 
     Scenario Outline: Validate home page buttons F2S1.
