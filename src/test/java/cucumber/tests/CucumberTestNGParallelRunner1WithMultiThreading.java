@@ -16,13 +16,15 @@ import java.net.URL;
 
 @CucumberOptions(
         monochrome = true,
-        tags = "@Local",
+        tags = "@Local1",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
-        plugin = {"listener.CucumberListener", "pretty", "html:target/cucumber-reports/CucumberReport.html", "json:target/cucumber-reports/cucumber-report.json"}
+        plugin = {"listener.CucumberListener",
+                "pretty", "html:target/cucumber-reports/CucumberReport1.html",
+                "json:target/cucumber-reports/cucumber-report1.json"}
 )
-public class MultiThreadsTestNGRunnerThroughTestNGXML {
+public class CucumberTestNGParallelRunner1WithMultiThreading {
 
     private TestNGCucumberRunner testNGCucumberRunner;
     private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
@@ -45,6 +47,12 @@ public class MultiThreadsTestNGRunnerThroughTestNGXML {
         testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
     }
 
+    /**
+     * Returns two dimensional array of PickleEventWrapper scenarios
+     * with their associated CucumberFeatureWrapper feature.
+     *
+     * @return a two dimensional array of scenarios features.
+     */
     @DataProvider
     public Object[][] scenarios() {
         return testNGCucumberRunner.provideScenarios();

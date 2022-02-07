@@ -16,24 +16,24 @@ import java.net.URL;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         monochrome = true,
-        tags = "@Local1",
+        tags = "@Local2",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
         plugin = {"listener.CucumberListener", "pretty",
-                "junit:target/junit-report1/junit.xml",
-                "html:target/cucumber-report1/CucumberReport.html",
-                "json:target/cucumber-report1/cucumber-report.json"})
+                "junit:target/junit-report2/junit.xml",
+                "html:target/cucumber-report2/CucumberReport.html",
+                "json:target/cucumber-report2/cucumber-report.json"})
 
-public class ForksJUnitParallelRunner1 {
+public class CucumberJUnitParallelRunner2WithForks {
     public static String         deviceName;
     public static String         platformVersion;
 
     @BeforeClass
     public static void setup() throws IOException {
-         deviceName = ConfigReader.config().getProperty("JUnitRunner1DeviceName");
-        platformVersion = ConfigReader.config().getProperty("JUnitRunner1DeviceVersion");
-        //        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
+        deviceName = ConfigReader.config().getProperty("JUnitRunner2DeviceName");
+        platformVersion = ConfigReader.config().getProperty("JUnitRunner2DeviceVersion");
+//        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("udid", deviceName);

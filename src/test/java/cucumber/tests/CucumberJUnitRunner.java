@@ -16,14 +16,14 @@ import java.net.URL;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         monochrome = true,
-        tags = "@Local",
+        tags = "@Local1",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
         plugin = {"listener.CucumberListener", "pretty",
                 "junit:target/junit-reports/junit.xml", "html:target/cucumber-reports/CucumberReport.html", "json:target/cucumber-reports/cucumber-report.json"})
 
-public class SingleThreadJUnitRunner {
+public class CucumberJUnitRunner {
     private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
     public static String         deviceName;
     public static String         platformVersion;
