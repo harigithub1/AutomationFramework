@@ -13,7 +13,7 @@ public class ConfigReader {
      *
      * @return it returns Properties prop object
      */
-    public static Properties config() {
+    public synchronized static Properties config() {
         prop = new Properties();
         try {
             FileInputStream ip = new FileInputStream("./src/test/resources/config.properties");

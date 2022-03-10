@@ -16,21 +16,18 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @Given("User is on home page")
     public void userisonhomepageandtapsCategories() {
-       // splashScreen.skipSplashScreen();
         myntraHomePage.userOnHomePage();
-//        candidateMainScreen.allowNotification();
     }
 
     @When("User clicks Studio {int} Two")
     public void userclicksStudio(int index) {
-    //    candidateMainScreen.clickToJob(index);
         myntraHomePage.clickStudio();
 
     }
 
     @Then("Verify Explore button")
     public void verifyExplorebutton() {
-        jobScreen.assertExploreTitleIsExpected();
+        myntraHomePage.assertExploreTitleIsExpected();
     }
 
     @When("User clicks on Profile Four")

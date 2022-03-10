@@ -1,11 +1,14 @@
 package cucumber.tests;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
@@ -19,7 +22,8 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@LocalSc1",
+        tags = "@Local",
+//        tags = "@Cloud",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -42,9 +46,11 @@ public class TestNGParallelRunner2 {
     @Parameters({"deviceName", "platformVersion"})
     public void setup(String deviceName, String platformVersion) throws IOException {
         DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
-
-        if (ConfigReader.config().getProperty("Cloud").equalsIgnoreCase("true")) {
-            ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
+            if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
+                ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+            else
+                ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
         } else {
             ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
         }

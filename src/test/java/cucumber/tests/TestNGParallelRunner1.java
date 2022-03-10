@@ -1,12 +1,16 @@
 package cucumber.tests;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 import org.testng.annotations.*;
+import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
 import utilities.ThreadLocalDriver;
 
@@ -18,18 +22,20 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@LocalSc1",
+        tags = "@Local",
+//        tags = "@Cloud",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
-        plugin = {"listener.CucumberListener",
-                "pretty", "html:target/cucumber-reports/CucumberReport1.html",
-                "json:target/cucumber-reports/cucumber-report1.json"}
+        plugin = {"listener.CucumberListener", "pretty",
+                "html:target/cucumber-reports/CucumberReport2.html",
+                "json:target/cucumber-reports/cucumber-report2.json"}
 )
 public class TestNGParallelRunner1 {
 
     private TestNGCucumberRunner testNGCucumberRunner;
     private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
+
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() {
@@ -40,9 +46,16 @@ public class TestNGParallelRunner1 {
     @Parameters({"deviceName", "platformVersion"})
     public void setup(String deviceName, String platformVersion) throws IOException {
         DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
-        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
-//        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
+            if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
+                ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+            else
+                ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+        } else {
+            ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
+        }
     }
+
 
     @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
     public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
@@ -60,6 +73,7 @@ public class TestNGParallelRunner1 {
         return testNGCucumberRunner.provideScenarios();
     }
 
+
     @AfterMethod
     public synchronized void teardown() {
         ThreadLocalDriver.getTLDriver().quit();
@@ -69,4 +83,5 @@ public class TestNGParallelRunner1 {
     public void tearDownClass() {
         testNGCucumberRunner.finish();
     }
+
 }

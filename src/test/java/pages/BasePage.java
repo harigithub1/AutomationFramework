@@ -1,5 +1,6 @@
 package pages;
 
+import io.appium.java_client.AppiumDriver;
 import listener.CucumberListener;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -10,18 +11,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends CucumberListener {
-    protected AndroidDriver<MobileElement> driver;
+    protected AppiumDriver<MobileElement> driver;
     protected WebDriverWait                wait;
 
-    public BasePage(AndroidDriver<MobileElement> driver) {
+    public BasePage(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
+    }
+
+    public BasePage() {
     }
 
     protected void waitAndClick(By by) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by)).click();
     }
-
     protected void click(By by) {
         driver.findElement(by).click();
     }

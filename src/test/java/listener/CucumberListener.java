@@ -44,13 +44,15 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public EventHandler<TestCaseStarted> eventHandlerTestCaseStarted = new EventHandler<TestCaseStarted>() {
         public void receive(TestCaseStarted event) {
             String testScenarioName = event.getTestCase().getName();
-            if (configReader.config().getProperty("isParallel").equals("true")) {
-                String deviceName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("deviceModel");
+            if (String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName")).contains("iphone")) {
+                String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
                 String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
                 ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
                 ptest.set(extentTest);
             } else {
-                ExtentTest extentTest = extent.createTest(testScenarioName);
+                String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
+                String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+                ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
                 ptest.set(extentTest);
             }
         }
@@ -72,7 +74,7 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
                 } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
                     test.get().fail("Test failed: " + event.getResult().getError());
                 } else {
-                    test.get().pass("Test skipped");
+                    test.get().skip("Test skipped");
                 }
             }
         }

@@ -2,121 +2,111 @@ package pages;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
 
+import static utilities.ThreadLocalDriver.getTLDriver;
+
 public class WikiHomePage extends BasePage {
-    public WikiHomePage(AndroidDriver<MobileElement> driver) {
-        super(driver);
+    public WikiHomePage(AppiumDriver<MobileElement> driver) {
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    /**Mobile Elements*/
-    By searchElementBy = By.xpath("//*[@text='Search Wikipedia']");
-    By insertTextElementBy           = By.id("org.wikipedia.alpha:id/search_src_text");
-    By profileIconBy    = By.xpath("//android.widget.LinearLayout[4]/android.widget.ImageView");
-    By StudioBy = By.xpath("//*[@text='Studio']");
-    By ProfileBy = By.xpath("//*[@text='Profile']");
-    By HomeBy = By.xpath("//*[@text='Home']");
-    By ListBy = By.xpath("//android.widget.FrameLayout[@content-desc=\"My lists\"]/android.view.ViewGroup");
-    By HistoryBy = By.xpath("//android.widget.FrameLayout[@content-desc=\"History\"]/android.widget.ImageView");
-    By NearbyBy = By.xpath("//android.widget.FrameLayout[@content-desc=\"Nearby\"]/android.view.ViewGroup");
-    By ExploreBy = By.xpath("//android.widget.FrameLayout[@content-desc=\"Explore\"]/android.view.ViewGroup");
-    By InTheNewsTitleBy = By.xpath("//*[@text='In the news']");
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"My lists\"]/android.view.ViewGroup")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Alert\"]")
+    MobileElement ListBy;
+
+    public MobileElement getListBy() {
+        return ListBy;
+    }
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"History\"]/android.widget.ImageView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"OK\"]")
+    MobileElement HistoryOrOk;
+
+    public MobileElement getHistoryBy() {
+        return HistoryOrOk;
+    }
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Nearby\"]/android.view.ViewGroup")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Text Button\"]")
+    MobileElement NearOrTextBtn;
+
+    public MobileElement getNearOrTextBtn() {
+        return NearOrTextBtn;
+    }
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Explore\"]/android.view.ViewGroup")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name=\"Text Input\"]")
+    MobileElement ExploreOrTextInpt;
+
+    public MobileElement getExploreOrTextInpt() {
+        return ExploreOrTextInpt;
+    }
+
+    @AndroidFindBy(xpath = "//*[@text='In the news']")
+    @iOSXCUITFindBy(xpath = "somexpath")
+    MobileElement InTheNewsTitleBy;
+
+    public MobileElement getInTheNewsTitleBy() {
+        return InTheNewsTitleBy;
+    }
 
 
-    /**Actions*/
-    public void allowNotification() {
+    /**
+     * Actions
+     */
+
+
+    @SneakyThrows
+    public void clickListElement() {
+        Thread.sleep(2000);
+        getListBy().click();
+        test.get().log(Status.INFO, "Clicked List/Alert", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     }
 
     @SneakyThrows
-    public void clickToJob(int index) {
-        Thread.sleep(4000);
-    }
-    public void clicksearchElement() {
-        waitAndClick(searchElementBy);
-        try {
-            //Thread.sleep(3000);
-            test.get().log(Status.INFO, "Clicked searchElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void clickinsertTextElementBy() {
-        waitAndClick(insertTextElementBy);
-        try {
-            test.get().log(Status.INFO, "Clicked insertTextElement", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void clickHome() {
-        waitAndClick(HomeBy);
-        try {
-            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void clickListElement() {
-        waitAndClick(ListBy);
-        try {
-            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void clickHistoryElement() {
-        waitAndClick(HistoryBy);
-        try {
-            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
+        getHistoryBy().click();
+        test.get().log(Status.INFO, "Clicked History/OK", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     }
 
+    @SneakyThrows
     public void clickNearbyElement() {
-        waitAndClick(NearbyBy);
-        try {
-            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
+        getNearOrTextBtn().click();
+        test.get().log(Status.INFO, "Clicked Nearby/Text box", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     }
 
+    @SneakyThrows
     public void clickExploreElement() {
-        waitAndClick(ExploreBy);
-        try {
-            test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void assertInTheNewsTitleIsAsExpected() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(InTheNewsTitleBy)).getText();
-        try {
-            //  Thread.sleep(3000);
-            test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(toolBarTitleStr.contains("In the news"));
+    Thread.sleep(2000);
+    getExploreOrTextInpt().click();
+            test.get().log(Status.INFO, "Clicked Explore/Test input", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     }
 
+    @SneakyThrows
+    public void assertInTheNewsTitleIsAsExpected() {
+            Thread.sleep(5000);
+        Assert.assertTrue(getInTheNewsTitleBy().isDisplayed());
+            test.get().log(Status.INFO, "InTheNews", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+    }
+
+    @SneakyThrows
     public void userOnWikiHomePage() {
         try {
             //  Thread.sleep(3000);

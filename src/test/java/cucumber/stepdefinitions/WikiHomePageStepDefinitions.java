@@ -17,7 +17,6 @@ public class WikiHomePageStepDefinitions extends BaseSteps{
 
     @Given("User is on BS home page")
     public void userIsOnBSHomePage() {
-//        bsAppScreen.clicksearchElement();
         bsAppScreen.userOnWikiHomePage();
     }
 
