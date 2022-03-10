@@ -1,6 +1,7 @@
 @Local1
   Feature: Feature Myntra Home page buttons F1Local1  .
 
+    @LocalSc1
     Scenario Outline: Scenario Validate home page buttons F1S1Local1.
       Given User is on home page
       When User clicks on Categories One
@@ -27,7 +28,7 @@
       Examples: First and Second jobs
         | index |
         | 0     |
-        | 1     |
+#        | 1     |
 
     Scenario Outline: Scenario Validate home page buttons F1S2Local1.
       Given User is on home page
@@ -55,4 +56,4 @@
       Examples: First and Second jobs
         | index |
         | 0     |
-#        | 1     |
+        | 1     |

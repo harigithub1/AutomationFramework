@@ -2,23 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Myntra-Android-Test-Suite" parallel="tests" thread-count="5">
-    <!--udid value(eg:RZ8NA0RM5GK) can be given in deviceName parameter in case of local testing-->
-
+<!--udid value(eg:RZ8NA0RM5GK) can be given in deviceName parameter in case of local testing-->
     <test name="Local S20">
         <parameter name="deviceModel" value="S20"/>
         <parameter name="deviceName" value="RZ8NA0RM5GK"/>
         <parameter name="platformVersion" value="12.0"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
-
     <test name="Local A71">
         <parameter name="deviceModel" value="A71"/>
         <parameter name="deviceName" value="RZ8NC07WQNP"/>
         <parameter name="platformVersion" value="11.0"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner2WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner2"/>
         </classes>
     </test>
 
@@ -29,7 +27,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
     <test name="BrowserStack Google Pixel 4">
@@ -38,7 +36,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
     <test name="BrowserStack Google Pixel 4 XL">
@@ -47,7 +45,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
     <test name="BrowserStack Google Pixel 3">
@@ -56,7 +54,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
     <test name="BrowserStack Google Pixel 3 XL">
@@ -65,7 +63,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <classes>
-            <class name="cucumber.tests.CucumberTestNGParallelRunner1WithMultiThreading"/>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
         </classes>
     </test>
 -->

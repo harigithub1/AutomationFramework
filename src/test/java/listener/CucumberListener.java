@@ -7,12 +7,7 @@ import io.cucumber.plugin.event.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
-import utilities.ExtentManager;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Properties;
+import utilities.ThreadLocalExtent;
 
 import utilities.ConfigReader;
 
@@ -20,7 +15,7 @@ import static utilities.ThreadLocalDriver.getTLDriver;
 
 public class CucumberListener extends ThreadLocal implements ConcurrentEventListener {
     ConfigReader configReader = new ConfigReader();
-    public static ExtentReports extent = ExtentManager.createInstance();
+    public static ExtentReports extent = ThreadLocalExtent.createInstance();
 
     public static ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();

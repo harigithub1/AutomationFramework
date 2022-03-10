@@ -13,10 +13,12 @@ import utilities.ThreadLocalDriver;
 import java.io.IOException;
 import java.net.URL;
 
-
+/**
+ * This class uses multithreading to run tests parallel
+ */
 @CucumberOptions(
         monochrome = true,
-        tags = "@Local1",
+        tags = "@LocalSc1",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -24,7 +26,7 @@ import java.net.URL;
                 "pretty", "html:target/cucumber-reports/CucumberReport1.html",
                 "json:target/cucumber-reports/cucumber-report1.json"}
 )
-public class CucumberTestNGParallelRunner1WithMultiThreading {
+public class TestNGParallelRunner1 {
 
     private TestNGCucumberRunner testNGCucumberRunner;
     private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();

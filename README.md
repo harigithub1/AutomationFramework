@@ -1,7 +1,7 @@
 # Mobile Automation Testing Framework
 Cucumber-Java-Maven based Automation framework for Mobile App testing.
 
-##To Run Tests
+## To Run Tests
 - Start appium server at 0.0.0.0 at port 4723
 - For parallel test using Forks, create multiple JUnit runners and add them in pom.xml file by using the ``ParallelRunner`` keyword. (can be executed parallelly based on tags)
 - For parallel test using MultiThreads use TestNG.xml file and run the xml file. (executing based on tags is not implemented yet)
@@ -18,25 +18,25 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
 - Local Testing
 - Cloud Testing
 - Supports both Android and iOS
-##Setup for Cloud Execution (BrowserStack)
+## Setup for Cloud Execution (BrowserStack)
 - Browserstack
 - To capture appium logs ``curl -u "haribabumaila_Elu5RJ:nSqD7s61yDhRpefqbTRb" \
   https://api.browserstack.com/automate/sessions/<session-id>/appiumlogs
   ``
-##Setup For Local Execution
-- ###Softwares:
+## Setup For Local Execution
+- ### Softwares:
 - JDK
 - Android Studio
 - Appium
 - IntelliJ
-- ###Set Env variables in Windows machine:
+- ### Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
 - Path with %JAVA_HOME%\bin
-- ###Set Env variables in Appium Server:
+- ### Set Env variables in Appium Server:
 - ANDROID_HOME with C:\Users\mhari\AppData\Local\Android\Sdk
 - JAVA_HOME with C:\Program Files (x86)\Java\jre1.8.0_311
 
-##Jenkins:
+## Jenkins:
 - #### Step1: installing maven in Jenkins Agent
   - MAVEN_HOME with C:\Program Files\apache-maven-3.6.1-bin\apache-maven-3.6.1
   - M2_HOME with C:\Program Files\apache-maven-3.6.1-bin\apache-maven-3.6.1
@@ -55,6 +55,8 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
 
 ## ADB
 - With Android Studio ADB will be installed automatically.
+- To enable developer options: About Phone->Software Information-> Tap Build Number multiple times
+- Navigate to Developer options and turn on USB debugging
 - Navigate to C:\Users\mhari\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb``
 - Now type `adb devices` to view the list of devices connected and their IDs
 - To install apk type ``adb -s <DEVICE ID> install <PATH TO APK>``
@@ -71,7 +73,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
   - Open GitHub in browser
   - Go to profiles and click on SSH Keys tab
   - Paste the copied key and click Add
-- ###For uploading new project to GitHub
+- ### For uploading new project to GitHub
   - Right click in the project folder and click git bash here and type ``git init`` command. Now ".git" folder will be created.
   - Enter `git add .` command to add all the project files.
   - Use `git commit -m "code change description"` to commit the files.
@@ -81,7 +83,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
     git remote add origin https://github.com/harigithub1/AutomationFramework.git
     ````
   - Push the project using `git push -u origin main`.
-- ###For importing existing project from GitHub and creating feature branch
+- ### For importing existing project from GitHub and creating feature branch
   - Clone the project:
     ````
     git clone https://github.com/harigithub1/AutomationFramework.git

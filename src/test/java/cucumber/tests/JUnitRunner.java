@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
 import utilities.ThreadLocalDriver;
 
@@ -16,22 +17,22 @@ import java.net.URL;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         monochrome = true,
-        tags = "@Local1",
+        tags = "@LocalSc1",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
         plugin = {"listener.CucumberListener", "pretty",
                 "junit:target/junit-reports/junit.xml", "html:target/cucumber-reports/CucumberReport.html", "json:target/cucumber-reports/cucumber-report.json"})
 
-public class CucumberJUnitRunner {
+public class JUnitRunner {
     private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
     public static String         deviceName;
     public static String         platformVersion;
 
     @BeforeClass
     public static void setup() throws IOException {
-         deviceName = "RZ8NA0RM5GK";
-          platformVersion = "12.0";
+         deviceName = ConfigReader.config().getProperty("JUnitRunnerDeviceName");
+          platformVersion = ConfigReader.config().getProperty("JUnitRunnerDeviceVersion");
 //        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
