@@ -93,3 +93,4 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
   - Commit your changes: `git commit -m "commit message"`
   - Push to the branch: `git push origin my-new-feature-branch-name`
   - Open GitHub and create a pull request to main branch
+  - To delete feature branch in github: `git push -d origin feature-branch-name`
