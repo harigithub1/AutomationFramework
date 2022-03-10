@@ -6,17 +6,16 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
 - For parallel testing use testNG.xml file and run the xml file.
 
 ## Notes for Browserstack execution mode:
-- Change devices in TestNG.xml
-- Change Thread count in TestNG.xml
-- Change Tag in TestRunner.java
-- Use Browserstack setTLDriver in BaseTest.java
+- Change devices in testNG.xml
+- Change Thread count in testNG.xml
+- Change Tag in TestNGParallelRunner*
 - Change desired capabilities in DesiredCapabilities.java
 
 ## Features:
 - Parallel Testing
 - Local Testing
 - Cloud Testing
-- Supports both Android and iOS
+
 ## Setup for Cloud Execution (BrowserStack)
 - Browserstack
 - To capture appium logs ``curl -u "haribabumaila_Elu5RJ:nSqD7s61yDhRpefqbTRb" \
