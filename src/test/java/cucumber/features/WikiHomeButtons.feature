@@ -7,8 +7,4 @@ Feature: Browser Stack Sample App Home page.
     When User clicks History Two
     And User clicks on Nearby Three
     And User clicks on Wiki Explore Four
-#    When User clicks List One
-#    When User clicks History Two
-#    And User clicks on Nearby Three
-#    And User clicks on Wiki Explore Four
 #    Then Verify InTheNewsTitle
