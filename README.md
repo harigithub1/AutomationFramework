@@ -1,23 +1,27 @@
 # Mobile Automation Testing Framework
-Cucumber-Java-Maven based Automation framework for Mobile App testing.
+Cucumber-Java-Maven based Automation framework for Mobile,Web and Api testing.
 
-## To Run Tests
+## To Run Tests on Local device
 - Start appium server at 0.0.0.0 at port 4723
-- For parallel testing use testNG.xml file and run the xml file.
+- For parallel testing use testngLocal.xml file and run the xml file. 
+- Update Thread count in testngLocal.xml
+- Update Tag in TestNGParallelRunner*
 
-## Notes for Browserstack execution mode:
-- Change devices in testNG.xml
-- Change Thread count in testNG.xml
-- Change Tag in TestNGParallelRunner*
-- Change desired capabilities in DesiredCapabilities.java
+## To Run Tests on Browserstack device
+- For parallel testing use testngCloud.xml file and run the xml file.
+- Update Thread count in testngCloud.xml
+- Update Tag in TestNGParallelRunner*
 
 ## Features:
+- Mobile App Testing
+- Web App Testing
+- Api Testing
 - Parallel Testing
 - Local Testing
 - Cloud Testing
 
 ## Setup for Cloud Execution (BrowserStack)
-- Browserstack
+- Generate app url using 
 - To capture appium logs ``curl -u "haribabumaila_Elu5RJ:nSqD7s61yDhRpefqbTRb" \
   https://api.browserstack.com/automate/sessions/<session-id>/appiumlogs
   ``
@@ -25,7 +29,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App testing.
 - ### Softwares:
 - JDK
 - Android Studio
-- Appium
+- Appium (v1.21)
 - IntelliJ
 - ### Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
