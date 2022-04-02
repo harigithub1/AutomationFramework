@@ -1,4 +1,4 @@
-# Mobile Automation Testing Framework
+# Automation Testing Framework
 Cucumber-Java-Maven based Automation framework for Mobile,Web and Api testing.
 
 ## To Run Tests on Local device
@@ -17,15 +17,15 @@ Cucumber-Java-Maven based Automation framework for Mobile,Web and Api testing.
 - Web App Testing
 - Api Testing
 - Parallel Testing
-- Local Testing
-- Cloud Testing
+- Local device Testing
+- Cloud device Testing
 
 ## Setup for Cloud Execution (BrowserStack)
 - Generate app url using 
 - To capture appium logs ``curl -u "haribabumaila_Elu5RJ:nSqD7s61yDhRpefqbTRb" \
   https://api.browserstack.com/automate/sessions/<session-id>/appiumlogs
   ``
-## Setup For Local Execution
+## Setup For Local Device Execution
 - ### Softwares:
 - JDK
 - Android Studio
