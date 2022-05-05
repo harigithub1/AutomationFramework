@@ -41,7 +41,7 @@ public class DesiredCapabilitiesUtil {
                 desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
             else
                 desiredCapabilities.setCapability("app", "bs://444bd0308813ae0dc236f8cd461c02d3afa7901d");
-            desiredCapabilities.setCapability("browserstack.video", "false");
+            desiredCapabilities.setCapability("browserstack.video", "true");
             desiredCapabilities.setCapability("project", "Mobile Automation Project");
             desiredCapabilities.setCapability("build", "Mobile Automation Build");
             desiredCapabilities.setCapability("name", "Mobile Automation Name");
