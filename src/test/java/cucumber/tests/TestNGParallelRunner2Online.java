@@ -32,7 +32,6 @@ public class TestNGParallelRunner2Online {
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
 
-
   @BeforeClass(alwaysRun = true)
   public void setUpClass() {
     testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
@@ -43,12 +42,11 @@ public class TestNGParallelRunner2Online {
   public void setup(String platform, String platformVersion, String browser) throws IOException {
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-        ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
     } else {
 //      ThreadLocalDriver.setTLDriverOnline(new WebDriver(), caps));
     }
   }
-
 
   @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
   public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
@@ -66,7 +64,6 @@ public class TestNGParallelRunner2Online {
     return testNGCucumberRunner.provideScenarios();
   }
 
-
   @AfterMethod
   public synchronized void teardown() {
     ThreadLocalDriver.getTLDriverOnline().quit();
@@ -76,5 +73,4 @@ public class TestNGParallelRunner2Online {
   public void tearDownClass() {
     testNGCucumberRunner.finish();
   }
-
 }

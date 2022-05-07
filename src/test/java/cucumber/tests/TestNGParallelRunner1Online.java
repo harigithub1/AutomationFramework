@@ -1,12 +1,9 @@
 package cucumber.tests;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
@@ -46,7 +43,7 @@ public class TestNGParallelRunner1Online {
   public void setup(String platform, String platformVersion, String browser) throws IOException {
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-        ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
     } else {
 //      ThreadLocalDriver.setTLDriverOnline(new WebDriver(), caps));
     }
