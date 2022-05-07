@@ -12,6 +12,7 @@ import utilities.ThreadLocalExtent;
 import utilities.ConfigReader;
 
 import static utilities.ThreadLocalDriver.getTLDriver;
+import static utilities.ThreadLocalDriver.getTLDriverOnline;
 
 public class CucumberListener extends ThreadLocal implements ConcurrentEventListener {
     ConfigReader configReader = new ConfigReader();
@@ -21,9 +22,22 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
     public static String takeScreenshotAsBase64() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return ((TakesScreenshot) getTLDriver()).getScreenshotAs(OutputType.BASE64);
     }
 
+    public static String takeScreenshotAsBase64Online() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ((TakesScreenshot) getTLDriverOnline()).getScreenshotAs(OutputType.BASE64);
+    }
 
     @Override
     public void setEventPublisher(EventPublisher publisher) {
@@ -44,15 +58,22 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public EventHandler<TestCaseStarted> eventHandlerTestCaseStarted = new EventHandler<TestCaseStarted>() {
         public void receive(TestCaseStarted event) {
             String testScenarioName = event.getTestCase().getName();
-            if (String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName")).contains("iphone")) {
-                String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
-                String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
-                ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
-                ptest.set(extentTest);
+            if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+                if (String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName")).contains("iphone")) {
+                    String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
+                    String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+                    ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+                    ptest.set(extentTest);
+                } else {
+                    String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
+                    String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+                    ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+                    ptest.set(extentTest);
+                }
             } else {
-                String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
-                String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
-                ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+                String browserName = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("browser"));
+                String platform = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("platform"));
+                ExtentTest extentTest = extent.createTest(platform + " v" + browserName + ": " + testScenarioName);
                 ptest.set(extentTest);
             }
         }
@@ -87,7 +108,6 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     private EventHandler<TestRunFinished> eventHandlerTestRunFinished = new EventHandler<TestRunFinished>() {
         public void receive(TestRunFinished event) {
         }
-
     };
 }
 /*

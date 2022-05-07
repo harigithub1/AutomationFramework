@@ -6,14 +6,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Reporter;
 import utilities.ThreadLocalDriver;
 
 public class WikiHomePageStepDefinitions extends BaseSteps{
     @Before
     public void setupLoginSteps() {
-        setupScreens(ThreadLocalDriver.getTLDriver());
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+            setupScreens(ThreadLocalDriver.getTLDriver());
+        } else {
+            setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());
+        }
     }
-
 
     @Given("User is on BS home page")
     public void userIsOnBSHomePage() {
