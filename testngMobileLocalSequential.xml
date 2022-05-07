@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Myntra-Android-Test-Suite" parallel="tests" thread-count="5">
+<suite name="Myntra-Android-Test-Suite">
 <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
-    <test name="Local S20">
-        <parameter name="Cloud" value="false"/>
-        <parameter name="deviceName" value="RZ8NA0RM5GK"/>
-        <parameter name="platform" value="android"/>
-        <parameter name="platformVersion" value="12.0"/>
-        <parameter name="OnlineOrMobile" value="Mobile"/>
-        <classes>
-            <class name="cucumber.tests.TestNGParallelRunner1"/>
-        </classes>
-    </test>
     <test name="Local A71">
         <parameter name="Cloud" value="false"/>
         <parameter name="deviceName" value="RZ8NC07WQNP"/>
@@ -20,7 +10,7 @@
         <parameter name="platformVersion" value="11.0"/>
         <parameter name="OnlineOrMobile" value="Mobile"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner2"/>
+            <class name="cucumber.tests.TestNGSequentialRunner"/>
         </classes>
     </test>
 </suite>

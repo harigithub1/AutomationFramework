@@ -38,66 +38,38 @@ public class MyntraHomePage extends BasePage {
 
   public void clickStudio() {
     waitAndClick(StudioBy);
-    try {
-      //Thread.sleep(3000);
-      test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    //Thread.sleep(3000);
+    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void clickProfile() {
     waitAndClick(ProfileBy);
-    try {
-      test.get().log(Status.INFO, "Clicked Profile", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Clicked Profile", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void clickHome() {
     waitAndClick(HomeBy);
-    try {
-      test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void clickExplore() {
     waitAndClick(ExploreBy);
-    try {
-      test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void clickCategories() {
     waitAndClick(CategoriesBy);
-    try {
-      test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void userOnHomePage() {
-    try {
-      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
   public void assertExploreTitleIsExpected() {
     String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(ExploreTitleBy)).getText();
-    try {
-      //  Thread.sleep(3000);
-      test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    //  Thread.sleep(3000);
+    test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     Assert.assertTrue(toolBarTitleStr.contains("Explore"));
   }
 }
