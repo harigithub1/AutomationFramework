@@ -1,4 +1,4 @@
-@CloudMobile
+@MobileCloud
 Feature: Browser Stack Sample App Home page.
 
   Scenario: Validate home page buttons.

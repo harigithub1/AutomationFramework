@@ -98,11 +98,7 @@ public class WikiHomePage extends BasePage {
 
   @SneakyThrows
   public void userOnWikiHomePage() {
-    try {
-      //  Thread.sleep(3000);
-      test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    //  Thread.sleep(3000);
+    test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 }
