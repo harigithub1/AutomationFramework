@@ -1,12 +1,11 @@
 package cucumber.tests;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 import utilities.DesiredCapabilitiesUtil;
@@ -20,7 +19,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@CloudMobile",
+        tags = "@CloudOnline",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -28,7 +27,7 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGParallelRunner1 {
+public class TestNGParallelRunner1Online {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
@@ -40,16 +39,13 @@ public class TestNGParallelRunner1 {
   }
 
   @BeforeMethod
-  @Parameters({"deviceName", "platformVersion"})
-  public void setup(String deviceName, String platformVersion) throws IOException {
-    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
+  @Parameters({"platform", "platformVersion", "browser"})
+  public void setup(String platform, String platformVersion, String browser) throws IOException {
+    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
-        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
-      else
-        ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
     } else {
-      ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
+//      ThreadLocalDriver.setTLDriverOnline(new WebDriver(), caps));
     }
   }
 
@@ -73,7 +69,7 @@ public class TestNGParallelRunner1 {
 
   @AfterMethod
   public synchronized void teardown() {
-    ThreadLocalDriver.getTLDriver().quit();
+    ThreadLocalDriver.getTLDriverOnline().quit();
   }
 
   @AfterClass(alwaysRun = true)
