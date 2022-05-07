@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Suite" parallel="tests" thread-count="5">
+    <test name="BrowserStack iPhone 13 Pro">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="deviceName" value="iPhone 13 Pro"/>
+        <parameter name="platform" value="ios"/>
+        <parameter name="platformVersion" value="15"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="OnlineOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.tests.TestNGParallelRunner1"/>
+        </classes>
+    </test>
+    <test name="BrowserStack Google Pixel 5">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="deviceName" value="Google Pixel 5"/>
+        <parameter name="platform" value="android"/>
+        <parameter name="platformVersion" value="11.0"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="OnlineOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.tests.TestNGParallelRunner2"/>
+        </classes>
+    </test>
+    <test name="BrowserStack Windows Chrome">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="platformVersion" value="11"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="OnlineOrMobile" value="Online"/>
+        <classes>
+            <class name="cucumber.tests.TestNGParallelRunner1Online"/>
+        </classes>
+    </test>
+    <test name="Local A71">
+        <parameter name="Cloud" value="false"/>
+        <parameter name="deviceName" value="RZ8NC07WQNP"/>
+        <parameter name="platform" value="android"/>
+        <parameter name="platformVersion" value="11.0"/>
+        <parameter name="OnlineOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.tests.TestNGSequentialRunner"/>
+        </classes>
+    </test>
+</suite>

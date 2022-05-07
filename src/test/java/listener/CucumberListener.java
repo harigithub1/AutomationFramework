@@ -60,15 +60,22 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
       String testScenarioName = event.getTestCase().getName();
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
         if (String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName")).toLowerCase().contains("iphone")) {
-          String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
-          String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("os_version"));
-          ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
-          ptest.set(extentTest);
+            String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
+            String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("os_version"));
+            ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+            ptest.set(extentTest);
         } else {
-          String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
-          String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
-          ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
-          ptest.set(extentTest);
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").contains("true")) {
+            String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
+            String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+            ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+            ptest.set(extentTest);
+          } else{
+            String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceModel"));
+            String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
+            ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
+            ptest.set(extentTest);
+          }
         }
       } else {
         String browserName = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("browserName"));

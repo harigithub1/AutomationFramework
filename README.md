@@ -104,3 +104,8 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
   - Push to the branch: `git push origin my-new-feature-branch-name`
   - Open GitHub and create a pull request to main branch
   - To delete feature branch in github: `git push -d origin feature-branch-name`
+## Jira integration
+#### Keys for interacting with Jira/Zephyr APIs
+- Zephyr Access key and Zephyr Secret key:
+  - To generate Zephyr Access key and Secret key refer https://support.smartbear.com/zephyr-squad-cloud/docs/api/api-keys.html
+  
