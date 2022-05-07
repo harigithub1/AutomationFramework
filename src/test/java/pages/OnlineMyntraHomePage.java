@@ -37,29 +37,17 @@ public class OnlineMyntraHomePage extends BasePage {
    */
   public void clickStudio() {
     getKidsCategoryButton().click();
-    try {
-      //Thread.sleep(3000);
-      test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    //Thread.sleep(3000);
+    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
   }
 
   public void clickCategories() {
     getWomenCategoryButton().click();
-    try {
-      test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
   }
 
   public void userOnHomePage() {
     ThreadLocalDriver.getTLDriverOnline().get("https://www.myntra.com/");
-    try {
-      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
   }
 }
