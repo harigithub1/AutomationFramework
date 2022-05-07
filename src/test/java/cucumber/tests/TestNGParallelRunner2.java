@@ -1,6 +1,5 @@
 package cucumber.tests;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
@@ -10,7 +9,6 @@ import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.annotations.*;
-import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
 import utilities.ThreadLocalDriver;
 
@@ -22,8 +20,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-//        tags = "@Local",
-        tags = "@Cloud",
+        tags = "@CloudMobile",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -33,55 +30,51 @@ import java.net.URL;
 )
 public class TestNGParallelRunner2 {
 
-    private TestNGCucumberRunner testNGCucumberRunner;
-    private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
+  private TestNGCucumberRunner testNGCucumberRunner;
+  private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
 
+  @BeforeClass(alwaysRun = true)
+  public void setUpClass() {
+    testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+  }
 
-    @BeforeClass(alwaysRun = true)
-    public void setUpClass() {
-        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+  @BeforeMethod
+  @Parameters({"deviceName", "platformVersion"})
+  public void setup(String deviceName, String platformVersion) throws IOException {
+    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
+      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
+        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+      else
+        ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+    } else {
+      ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
     }
+  }
 
-    @BeforeMethod
-    @Parameters({"deviceName", "platformVersion"})
-    public void setup(String deviceName, String platformVersion) throws IOException {
-        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-            if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
-                ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
-            else
-                ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
-        } else {
-            ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
-        }
-    }
+  @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
+  public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
+    testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
+  }
 
+  /**
+   * Returns two dimensional array of PickleEventWrapper scenarios
+   * with their associated CucumberFeatureWrapper feature.
+   *
+   * @return a two dimensional array of scenarios features.
+   */
+  @DataProvider
+  public Object[][] scenarios() {
+    return testNGCucumberRunner.provideScenarios();
+  }
 
-    @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
-    public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
-        testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
-    }
+  @AfterMethod
+  public synchronized void teardown() {
+    ThreadLocalDriver.getTLDriver().quit();
+  }
 
-    /**
-     * Returns two dimensional array of PickleEventWrapper scenarios
-     * with their associated CucumberFeatureWrapper feature.
-     *
-     * @return a two dimensional array of scenarios features.
-     */
-    @DataProvider
-    public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
-    }
-
-
-    @AfterMethod
-    public synchronized void teardown() {
-        ThreadLocalDriver.getTLDriver().quit();
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDownClass() {
-        testNGCucumberRunner.finish();
-    }
-
+  @AfterClass(alwaysRun = true)
+  public void tearDownClass() {
+    testNGCucumberRunner.finish();
+  }
 }
