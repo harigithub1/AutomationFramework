@@ -7,15 +7,21 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
 - Update Thread count in testngLocal.xml
 - Update Tag in TestNGParallelRunner*
 
+## Maven commands
+- ``mvn clean test -PMobileCloudParallel``
+- ``mvn clean test -PMobileCloudSequential``
+- ``mvn clean test -POnlineCloudParallel``
+- ``mvn clean test -POnlineCloudSequential``
+
 ## To Run Tests on Browserstack device
 - For parallel testing use testngCloud.xml file and run the xml file.
 - Update Thread count in testngCloud.xml
-- Update Tag in TestNGParallelRunner*
+- Update Tag in TestNGParallelRunner1,2 for mobile
+- Update Tag in TestNGParallelRunner1Online,2 for online
 
 ## Features:
 - Mobile App Testing
 - Web App Testing
-- Api Testing
 - Parallel Testing
 - Local device Testing
 - Cloud device Testing
@@ -27,10 +33,12 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
   ``
 ## Setup For Local Device Execution
 - ### Softwares:
-- JDK
-- Android Studio
+- JDK (v11)
+- Android Studio (if executing on virtual android devices)
 - Appium (v1.21)
 - IntelliJ
+- Git
+- Maven
 - ### Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
 - Path with %JAVA_HOME%\bin

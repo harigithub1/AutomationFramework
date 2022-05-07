@@ -9,43 +9,43 @@ import io.cucumber.java.en.When;
 import org.testng.Reporter;
 import utilities.ThreadLocalDriver;
 
-public class WikiHomePageStepDefinitions extends BaseSteps{
-    @Before
-    public void setupLoginSteps() {
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
-            setupScreens(ThreadLocalDriver.getTLDriver());
-        } else {
-            setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());
-        }
+public class WikiHomePageStepDefinitions extends BaseSteps {
+  @Before
+  public void setupLoginSteps() {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+      setupScreens(ThreadLocalDriver.getTLDriver());
+    } else {
+      setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());
     }
+  }
 
-    @Given("User is on BS home page")
-    public void userIsOnBSHomePage() {
-        bsAppScreen.userOnWikiHomePage();
-    }
+  @Given("User is on BS home page")
+  public void userIsOnBSHomePage() {
+    bsAppScreen.userOnWikiHomePage();
+  }
 
-    @When("User clicks History Two")
-    public void userClicksButton() {
-        bsAppScreen.clickHistoryElement();
-    }
+  @When("User clicks History Two")
+  public void userClicksButton() {
+    bsAppScreen.clickHistoryElement();
+  }
 
-    @And("User clicks on Nearby Three")
-    public void userClicksOnButtonA() {
-        bsAppScreen.clickNearbyElement();
-    }
+  @And("User clicks on Nearby Three")
+  public void userClicksOnButtonA() {
+    bsAppScreen.clickNearbyElement();
+  }
 
-    @And("User clicks on Wiki Explore Four")
-    public void userClicksOnButtonB() {
-        bsAppScreen.clickExploreElement();
-    }
+  @And("User clicks on Wiki Explore Four")
+  public void userClicksOnButtonB() {
+    bsAppScreen.clickExploreElement();
+  }
 
-    @Then("Verify InTheNewsTitle")
-    public void verifyButton() {
-        bsAppScreen.assertInTheNewsTitleIsAsExpected();
-    }
+  @Then("Verify InTheNewsTitle")
+  public void verifyButton() {
+    bsAppScreen.assertInTheNewsTitleIsAsExpected();
+  }
 
-    @When("User clicks List One")
-    public void userClicksList() {
-        bsAppScreen.clickListElement();
-    }
+  @When("User clicks List One")
+  public void userClicksList() {
+    bsAppScreen.clickListElement();
+  }
 }
