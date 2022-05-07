@@ -22,8 +22,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-//        tags = "@Local",
-        tags = "@Cloud",
+        tags = "@CloudMobile",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
