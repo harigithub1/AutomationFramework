@@ -57,11 +57,8 @@ public class JUnitRunner {
 //        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
   }
 
-
   @AfterClass
   public static void teardown() {
     ThreadLocalDriver.getTLDriver().quit();
   }
-
-
 }

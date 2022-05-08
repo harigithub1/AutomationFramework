@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class AddZephyrTestsToTestCycleAndGetExecutionID {
   public static void main(String[] args) throws URISyntaxException, IllegalStateException {
-    //Generating jwt token first
+    // Generating jwt token first
     // only base url should be used to generate the jwt (not the complete url)
     String baseURLZephyr = "https://prod-api.zephyr4jiracloud.com/connect";
     String accessKeyZephyr = "zephyr access key";

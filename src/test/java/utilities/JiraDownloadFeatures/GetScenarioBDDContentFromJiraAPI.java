@@ -2,8 +2,6 @@ package utilities.JiraDownloadFeatures;
 
 import io.restassured.response.Response;
 
-import java.util.List;
-
 import static io.restassured.RestAssured.given;
 
 public class GetScenarioBDDContentFromJiraAPI {
@@ -65,6 +63,5 @@ public class GetScenarioBDDContentFromJiraAPI {
                     .jsonPath()
                     .getString("fields.summary");
     System.out.println(scenarioSummaryFromJira);
-
   }
 }
