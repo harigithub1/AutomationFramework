@@ -104,8 +104,19 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
   - Push to the branch: `git push origin my-new-feature-branch-name`
   - Open GitHub and create a pull request to main branch
   - To delete feature branch in github: `git push -d origin feature-branch-name`
-## Jira integration
-#### Keys for interacting with Jira/Zephyr APIs
-- Zephyr Access key and Zephyr Secret key:
-  - To generate Zephyr Access key and Secret key refer https://support.smartbear.com/zephyr-squad-cloud/docs/api/api-keys.html
-  
+
+## Jira and ZephyrSquadCloud integration
+#### Keys for interacting with Jira/ZephyrSquadCloud APIs
+- ZephyrSquadCloud Rest API link1: https://support.smartbear.com/zephyr-squad-cloud/docs/api/index.html
+- ZephyrSquadCloud Rest API link2 (interactive api): https://zephyrsquad.docs.apiary.io/#reference/execution/update-execution/update-execution
+- ZephyrSquadCloud Access key and Zephyr Secret key:
+  - To generate ZephyrSquadCloud Access key and Secret key refer https://support.smartbear.com/zephyr-squad-cloud/docs/api/api-keys.html
+- Jira Account ID:
+  - Its is available in the URL after clicking on the profile link in jira.
+- Jira basic authorization token: follow below steps to generate basic authorization token for jira:
+  - Step1: Get Jira API key from Jira account settings
+  - Step2: Generate base64 encoded string of "JiraEmailID:JiraApiKey", append Basic keyword and use it as Authorization header.
+    - To generate base64 encoded string: www.base64encode.org
+    - Example: "Authorization: Basic base64-encoded-string"
+    - For detailed info follow https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/
+- Link to download Jar for generating JWT token: https://support.smartbear.com/zephyr-squad-cloud/docs/api/jwt-token.html

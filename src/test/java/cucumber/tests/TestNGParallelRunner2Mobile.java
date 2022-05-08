@@ -28,11 +28,10 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGParallelRunner1 {
+public class TestNGParallelRunner2Mobile {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
-
 
   @BeforeClass(alwaysRun = true)
   public void setUpClass() {
@@ -53,7 +52,6 @@ public class TestNGParallelRunner1 {
     }
   }
 
-
   @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
   public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
     testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
@@ -70,7 +68,6 @@ public class TestNGParallelRunner1 {
     return testNGCucumberRunner.provideScenarios();
   }
 
-
   @AfterMethod
   public synchronized void teardown() {
     ThreadLocalDriver.getTLDriver().quit();
@@ -80,5 +77,4 @@ public class TestNGParallelRunner1 {
   public void tearDownClass() {
     testNGCucumberRunner.finish();
   }
-
 }

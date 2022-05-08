@@ -11,7 +11,7 @@
         <parameter name="password" value="password@123"/>
         <parameter name="OnlineOrMobile" value="Mobile"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner1"/>
+            <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
         </classes>
     </test>
 </suite>

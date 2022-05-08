@@ -20,7 +20,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@MobileLocal",
+        tags = "@MobileCloud",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -28,11 +28,10 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGSequentialRunner {
+public class TestNGParallelRunner1Mobile {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
-
 
   @BeforeClass(alwaysRun = true)
   public void setUpClass() {
@@ -53,7 +52,6 @@ public class TestNGSequentialRunner {
     }
   }
 
-
   @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
   public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
     testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
@@ -69,7 +67,6 @@ public class TestNGSequentialRunner {
   public Object[][] scenarios() {
     return testNGCucumberRunner.provideScenarios();
   }
-
 
   @AfterMethod
   public synchronized void teardown() {
