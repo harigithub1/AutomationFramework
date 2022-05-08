@@ -8,8 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-import java.io.IOException;
-
 public class MyntraHomePage extends BasePage {
   public MyntraHomePage(AppiumDriver<MobileElement> driver) {
     super(driver);
@@ -21,21 +19,16 @@ public class MyntraHomePage extends BasePage {
   By allowWhenUsingBy = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
   By jobsBy = By.id("com.isinolsun.app:id/rootRelativeView");
   By profileIconBy = By.xpath("//android.widget.LinearLayout[4]/android.widget.ImageView");
-
   By StudioBy = By.xpath("//*[@text='Studio']");
   By ProfileBy = By.xpath("//*[@text='Profile']");
   By HomeBy = By.xpath("//*[@text='Home']");
   By ExploreBy = By.xpath("//*[@text='Explore']");
   By CategoriesBy = By.xpath("//*[@text='Categories']");
-  /**
-   * Mobile Elements
-   */
   By ExploreTitleBy = By.xpath("//*[@text='Explore']");
 
   /**
    * Actions
    */
-
   public void clickStudio() {
     waitAndClick(StudioBy);
     //Thread.sleep(3000);
@@ -68,7 +61,6 @@ public class MyntraHomePage extends BasePage {
 
   public void assertExploreTitleIsExpected() {
     String toolBarTitleStr = wait.until(ExpectedConditions.visibilityOfElementLocated(ExploreTitleBy)).getText();
-    //  Thread.sleep(3000);
     test.get().log(Status.INFO, "Verify Explore button", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
     Assert.assertTrue(toolBarTitleStr.contains("Explore"));
   }

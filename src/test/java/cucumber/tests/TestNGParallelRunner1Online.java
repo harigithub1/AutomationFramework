@@ -32,7 +32,6 @@ public class TestNGParallelRunner1Online {
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
 
-
   @BeforeClass(alwaysRun = true)
   public void setUpClass() {
     testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
@@ -48,7 +47,6 @@ public class TestNGParallelRunner1Online {
 //      ThreadLocalDriver.setTLDriverOnline(new WebDriver(), caps));
     }
   }
-
 
   @Test(groups = "cucumber", description = "Run Cucumber Features.", dataProvider = "scenarios")
   public void scenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
@@ -66,7 +64,6 @@ public class TestNGParallelRunner1Online {
     return testNGCucumberRunner.provideScenarios();
   }
 
-
   @AfterMethod
   public synchronized void teardown() {
     ThreadLocalDriver.getTLDriverOnline().quit();
@@ -76,5 +73,4 @@ public class TestNGParallelRunner1Online {
   public void tearDownClass() {
     testNGCucumberRunner.finish();
   }
-
 }

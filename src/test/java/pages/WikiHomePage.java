@@ -11,8 +11,6 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import java.io.IOException;
-
 public class WikiHomePage extends BasePage {
   public WikiHomePage(AppiumDriver<MobileElement> driver) {
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);

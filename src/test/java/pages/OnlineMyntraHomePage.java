@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ThreadLocalDriver;
 
-import java.io.IOException;
-
 public class OnlineMyntraHomePage extends BasePage {
   public OnlineMyntraHomePage(RemoteWebDriver driver) {
     PageFactory.initElements(driver, this);
@@ -37,7 +35,6 @@ public class OnlineMyntraHomePage extends BasePage {
    */
   public void clickStudio() {
     getKidsCategoryButton().click();
-    //Thread.sleep(3000);
     test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
   }
 
