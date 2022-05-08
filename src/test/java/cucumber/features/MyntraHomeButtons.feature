@@ -14,7 +14,6 @@ Feature: Myntra Home page buttons
     Examples:
       | index |
       | 0     |
-#        | 1     |
 
   Scenario Outline: Validate home page buttons.
     Given User is on home page

@@ -77,5 +77,4 @@ public class TestNGParallelRunner1Mobile {
   public void tearDownClass() {
     testNGCucumberRunner.finish();
   }
-
 }

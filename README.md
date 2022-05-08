@@ -3,7 +3,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
 
 ## To Run Tests on Local device
 - Start appium server at 0.0.0.0 at port 4723
-- For parallel testing use testngLocal.xml file and run the xml file. 
+- For parallel testing use parallel testNG local xml files. 
 - Update Thread count in testngLocal.xml
 - Update Tag in TestNGParallelRunner*
 
@@ -14,17 +14,17 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
 - ``mvn clean test -POnlineCloudSequential``
 
 ## To Run Tests on Browserstack device
-- For parallel testing use testngCloud.xml file and run the xml file.
+- For parallel testing use parallel testNG cloud xml files.
 - Update Thread count in testngCloud.xml
-- Update Tag in TestNGParallelRunner1,2 for mobile
+- Update Tag in TestNGParallelRunner1Mobile,2 for mobile
 - Update Tag in TestNGParallelRunner1Online,2 for online
 
-## Features:
-- Mobile App Testing
-- Web App Testing
+## Framework Features:
+- Mobile App Testing (On both local and cloud)
+- Web App Testing (On cloud)
 - Parallel Testing
-- Local device Testing
-- Cloud device Testing
+- Jira integration
+- Jenkins integration
 
 ## Setup for Cloud Execution (BrowserStack)
 - Generate app url using 
@@ -34,16 +34,18 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
 ## Setup For Local Device Execution
 - ### Softwares:
 - JDK (v11)
-- Android Studio (if executing on virtual android devices)
+- Android Studio (for adb and for executing on android virtual devices)
 - Appium (v1.21)
 - IntelliJ
 - Git
 - Maven
+
 - ### Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
 - Path with %JAVA_HOME%\bin
+
 - ### Set Env variables in Appium Server:
-- ANDROID_HOME with C:\Users\mhari\AppData\Local\Android\Sdk
+- ANDROID_HOME with C:\Users\user\AppData\Local\Android\Sdk
 - JAVA_HOME with C:\Program Files (x86)\Java\jre1.8.0_311
 
 ## Jenkins:
@@ -67,9 +69,10 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
 - With Android Studio ADB will be installed automatically.
 - To enable developer options: About Phone->Software Information-> Tap Build Number multiple times
 - Navigate to Developer options and turn on USB debugging
-- Navigate to C:\Users\mhari\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb``
+- Navigate to C:\Users\user\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb``
 - Now type `adb devices` to view the list of devices connected and their IDs
 - To install apk type ``adb -s <DEVICE ID> install <PATH TO APK>``
+
 ## GitHub
 - ### SSH key generation
   - Open git bash and enter
@@ -83,6 +86,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
   - Open GitHub in browser
   - Go to profiles and click on SSH Keys tab
   - Paste the copied key and click Add
+
 - ### For uploading new project to GitHub
   - Right click in the project folder and click git bash here and type ``git init`` command. Now ".git" folder will be created.
   - Enter `git add .` command to add all the project files.
@@ -93,6 +97,7 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
     git remote add origin https://github.com/harigithub1/AutomationFramework.git
     ````
   - Push the project using `git push -u origin main`.
+
 - ### For importing existing project from GitHub and creating feature branch
   - Clone the project:
     ````
