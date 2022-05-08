@@ -4,6 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
@@ -44,7 +45,8 @@ public class TestNGParallelRunner2Online {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
     } else {
-//      ThreadLocalDriver.setTLDriverOnline(new WebDriver(), caps));
+      System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
+      ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver());
     }
   }
 
@@ -66,7 +68,10 @@ public class TestNGParallelRunner2Online {
 
   @AfterMethod
   public synchronized void teardown() {
-    ThreadLocalDriver.getTLDriverOnline().quit();
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online"))
+      ThreadLocalDriver.getTLDriverOnline().quit();
+    else
+      ThreadLocalDriver.getTLDriverOnlineLocal().quit();
   }
 
   @AfterClass(alwaysRun = true)
