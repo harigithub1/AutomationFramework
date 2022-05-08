@@ -1,6 +1,5 @@
 package utilities.JiraDownloadFeatures;
 
-import com.google.gson.JsonParseException;
 import com.thed.zephyr.cloud.rest.ZFJCloudRestClient;
 import com.thed.zephyr.cloud.rest.client.JwtGenerator;
 import io.restassured.path.json.JsonPath;

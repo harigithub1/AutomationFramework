@@ -8,6 +8,8 @@
         <parameter name="deviceName" value="RZ8NA0RM5GK"/>
         <parameter name="platform" value="android"/>
         <parameter name="platformVersion" value="12.0"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
         <parameter name="OnlineOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
@@ -18,6 +20,8 @@
         <parameter name="deviceName" value="RZ8NC07WQNP"/>
         <parameter name="platform" value="android"/>
         <parameter name="platformVersion" value="11.0"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
         <parameter name="OnlineOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner2Mobile"/>

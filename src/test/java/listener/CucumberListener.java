@@ -41,7 +41,6 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
 
   @Override
   public void setEventPublisher(EventPublisher publisher) {
-
     publisher.registerHandlerFor(TestRunStarted.class, eventHandlerTestRunStarted);
     publisher.registerHandlerFor(TestCaseStarted.class, eventHandlerTestCaseStarted);
     publisher.registerHandlerFor(TestStepStarted.class, eventHandlerTestStepStarted);
@@ -110,9 +109,7 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
   public EventHandler<TestCaseFinished> eventHandlerTestCaseFinished = new EventHandler<TestCaseFinished>() {
     public void receive(TestCaseFinished event) {
       extent.flush();
-
 /*    Below code is to update test status in jira
-
       String testScenarioKey = event.getTestCase().getTags().get(1).substring(9);
       String issueIDOfScenario = "get issue id using above scenario key and GetScenarioIssueIDsUsingKeyFromJiraAPI.java class";
       int testResult;

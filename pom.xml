@@ -156,7 +156,19 @@
         <appium-java-client-version>7.6.0</appium-java-client-version>
         <selenium-java-version>3.141.59</selenium-java-version>
         <testng-version>7.5</testng-version>
+        <junit-version>4.13.2</junit-version>
+        <cucumber-junit-version>7.2.3</cucumber-junit-version>
         <lombok-version>1.18.22</lombok-version>
+        <cucumber-java-version>6.10.3</cucumber-java-version>
+        <cucumber-jvm-version>7.2.3</cucumber-jvm-version>
+        <cucumber-core-version>6.10.3</cucumber-core-version>
+        <gherkin-version>18.1.1</gherkin-version>
+        <cucumber-testng-version>6.10.3</cucumber-testng-version>
+        <cucumber-picocontainer-version>7.2.3</cucumber-picocontainer-version>
+        <cucumber-reporting-version>5.6.1</cucumber-reporting-version>
+        <extentreports-version>5.0.9</extentreports-version>
+        <cucumber-plugin-version>7.2.3</cucumber-plugin-version>
+        <rest-assured-version>4.5.0</rest-assured-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -186,14 +198,14 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.2.3</version>
+            <version>${cucumber-junit-version}</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -208,13 +220,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>6.10.3</version>
+            <version>${cucumber-java-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-jvm</artifactId>
-            <version>7.2.3</version>
+            <version>${cucumber-jvm-version}</version>
             <type>pom</type>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
@@ -222,51 +234,51 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>6.10.3</version>
+            <version>${cucumber-core-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
         <!--22.0.0 version is not working-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>gherkin</artifactId>
-            <version>18.1.1</version>
+            <version>${gherkin-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <!--7.2.3 is not working-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>6.10.3</version>
+            <version>${cucumber-testng-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.2.3</version>
+            <version>${cucumber-picocontainer-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.6.1</version>
+            <version>${cucumber-reporting-version}</version>
         </dependency>
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.0.9</version>
+            <version>${extentreports-version}</version>
             <scope>test</scope>
         </dependency>
         <!-- required to execute listener.CucumberListener class -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-plugin</artifactId>
-            <version>7.2.3</version>
+            <version>${cucumber-plugin-version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.5.0</version>
+            <version>${rest-assured-version}</version>
             <scope>test</scope>
         </dependency>
         <!--zephyr squad library-->

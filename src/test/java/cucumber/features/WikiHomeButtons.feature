@@ -2,7 +2,7 @@
 Feature: Browser Stack Sample App Home page.
 
   Scenario: Validate home page buttons.
-    Given User is on BS home page
+    Given User is on Wiki home page
     When User clicks List One
     When User clicks History Two
 #    And User clicks on Nearby Three

@@ -1,6 +1,5 @@
 package cucumber.stepdefinitions;
 
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,7 +18,7 @@ public class WikiHomePageStepDefinitions extends BaseSteps {
     }
   }
 
-  @Given("User is on BS home page")
+  @Given("User is on Wiki home page")
   public void userIsOnBSHomePage() {
     bsAppScreen.userOnWikiHomePage();
   }
