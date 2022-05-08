@@ -17,8 +17,10 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
   public void setupLoginSteps() {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
       setupScreens(ThreadLocalDriver.getTLDriver());
-    } else {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")){
       setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());
+    } else {
+      setupScreensOnlineLocal(ThreadLocalDriver.getTLDriverOnlineLocal());
     }
   }
 
@@ -26,8 +28,10 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
   public void userisonhomepageandtapsCategories() {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
       myntraHomePage.userOnHomePage();
-    } else {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")){
       onlineMyntraHomePage.userOnHomePage();
+    } else {
+      localOnlineMyntraHomePage.userOnHomePage();
     }
   }
 
@@ -65,8 +69,10 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
   public void userClicksOnCategories() {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
       myntraHomePage.clickCategories();
-    } else {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")) {
       onlineMyntraHomePage.clickCategories();
+    } else {
+      localOnlineMyntraHomePage.clickCategories();
     }
   }
 }

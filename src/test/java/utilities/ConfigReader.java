@@ -18,8 +18,6 @@ public class ConfigReader {
     try {
       FileInputStream ip = new FileInputStream("./src/test/resources/config.properties");
       prop.load(ip);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
