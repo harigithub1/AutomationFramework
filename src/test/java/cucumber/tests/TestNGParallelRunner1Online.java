@@ -47,6 +47,7 @@ public class TestNGParallelRunner1Online {
     } else {
       System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
       ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver());
+//      ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver(caps));
     }
   }
 
