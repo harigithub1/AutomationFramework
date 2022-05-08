@@ -269,5 +269,13 @@
             <version>4.5.0</version>
             <scope>test</scope>
         </dependency>
+        <!--zephyr squad library-->
+        <dependency>
+            <groupId>zfj-cloud-rest-client-1.2-jar-with-dependencies</groupId>
+            <artifactId>zfj-cloud-rest-client-1.2-jar-with-dependencies</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${project.basedir}/repo/zfj-cloud-rest-client-1.2-jar-with-dependencies.zip</systemPath>
+        </dependency>
     </dependencies>
 </project>

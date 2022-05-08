@@ -10,7 +10,7 @@
         <parameter name="platformVersion" value="11.0"/>
         <parameter name="OnlineOrMobile" value="Mobile"/>
         <classes>
-            <class name="cucumber.tests.TestNGSequentialRunner"/>
+            <class name="cucumber.tests.TestNGSequentialRunnerMobile"/>
         </classes>
     </test>
 </suite>
