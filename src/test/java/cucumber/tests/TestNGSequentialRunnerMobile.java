@@ -15,12 +15,9 @@ import utilities.ThreadLocalDriver;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- * This class uses multithreading to run tests parallel
- */
 @CucumberOptions(
         monochrome = true,
-        tags = "@MobileCloud",
+        tags = "@MobileLocal",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -28,7 +25,7 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGParallelRunner2 {
+public class TestNGSequentialRunnerMobile {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();

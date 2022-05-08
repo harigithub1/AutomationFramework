@@ -110,6 +110,25 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
   public EventHandler<TestCaseFinished> eventHandlerTestCaseFinished = new EventHandler<TestCaseFinished>() {
     public void receive(TestCaseFinished event) {
       extent.flush();
+
+/*    Below code is to update test status in jira
+
+      String testScenarioKey = event.getTestCase().getTags().get(1).substring(9);
+      String issueIDOfScenario = "get issue id using above scenario key and GetScenarioIssueIDsUsingKeyFromJiraAPI.java class";
+      int testResult;
+      if(event.getResult().getStatus().toString().equalsIgnoreCase("PASSED")){
+        testResult=1;
+        String executionID = "get execution id from AddZephyrTestsToTestCycleAndGetExecutionID.java class" +
+                "by providing issueIDOfScenario and cycleID";
+        Now execute the test by calling ExecuteTestsinTestCycleInZephyrSquadCloud.java class
+      }
+      if(event.getResult().getStatus().toString().equalsIgnoreCase("FAILED")){
+        testResult=2;
+        String executionID = "get execution id from AddZephyrTestsToTestCycleAndGetExecutionID.java class" +
+                "by providing issueIDOfScenario and cycleID";
+        Now execute the test by calling ExecuteTestsinTestCycleInZephyrSquadCloud.java class
+      }
+*/
     }
   };
   private EventHandler<TestRunFinished> eventHandlerTestRunFinished = new EventHandler<TestRunFinished>() {
