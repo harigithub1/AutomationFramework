@@ -119,4 +119,4 @@ Cucumber-Java-Maven based Automation framework for Mobile App and Website Applic
     - To generate base64 encoded string: www.base64encode.org
     - Example: "Authorization: Basic base64-encoded-string"
     - For detailed info follow https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/
-- Link to download Jar for generating JWT token: https://support.smartbear.com/zephyr-squad-cloud/docs/api/jwt-token.html
+- Link to download Jar for interacting with Jira and ZephyrSquadCloud APIs: https://support.smartbear.com/zephyr-squad-cloud/docs/api/jwt-token.html
