@@ -9,13 +9,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
 import utilities.ThreadLocalExtent;
 
-import utilities.ConfigReader;
-
-import static utilities.ThreadLocalDriver.getTLDriver;
-import static utilities.ThreadLocalDriver.getTLDriverOnline;
+import static utilities.ThreadLocalDriver.*;
 
 public class CucumberListener extends ThreadLocal implements ConcurrentEventListener {
-  ConfigReader configReader = new ConfigReader();
   public static ExtentReports extent = ThreadLocalExtent.createInstance();
 
   public static ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
@@ -37,6 +33,15 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
       e.printStackTrace();
     }
     return ((TakesScreenshot) getTLDriverOnline()).getScreenshotAs(OutputType.BASE64);
+  }
+
+  public static String takeScreenshotAsBase64OnlineLocal() {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return ((TakesScreenshot) getTLDriverOnlineLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
   @Override
@@ -76,10 +81,14 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
             ptest.set(extentTest);
           }
         }
-      } else {
+      } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")){
         String browserName = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("browserName"));
         String platform = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("platform"));
         ExtentTest extentTest = extent.createTest(platform + " " + browserName + ": " + testScenarioName);
+        ptest.set(extentTest);
+      } else {
+        String browserName = getTLDriverOnlineLocal().getClass().getSimpleName().substring(0,6);
+        ExtentTest extentTest = extent.createTest( browserName + ": " + testScenarioName);
         ptest.set(extentTest);
       }
     }

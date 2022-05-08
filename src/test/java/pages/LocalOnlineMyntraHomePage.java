@@ -2,15 +2,15 @@ package pages;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
 import utilities.ThreadLocalDriver;
 
-public class OnlineMyntraHomePage extends BasePage {
-  public OnlineMyntraHomePage(RemoteWebDriver driver) {
+public class LocalOnlineMyntraHomePage extends BasePage {
+  public LocalOnlineMyntraHomePage(WebDriver driver) {
     PageFactory.initElements(driver, this);
   }
 
@@ -41,16 +41,11 @@ public class OnlineMyntraHomePage extends BasePage {
 
   public void clickCategories() {
     getWomenCategoryButton().click();
-    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
+    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
   }
 
   public void userOnHomePage() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.getTLDriverOnline().get("https://www.myntra.com/");
-      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-    } else {
       ThreadLocalDriver.getTLDriverOnlineLocal().get("https://www.myntra.com/");
       test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-    }
   }
 }

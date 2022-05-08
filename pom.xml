@@ -134,7 +134,7 @@
             </build>
         </profile>
         <profile>
-            <id>OnlineMobileCloudMobileLocalParallel</id>
+            <id>OnlineMobileCloudParallel</id>
             <build>
                 <plugins>
                     <plugin>
@@ -143,7 +143,7 @@
                         <version>2.22.2</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testngOnlineMobileCloudMobileLocalParallel.xml</suiteXmlFile>
+                                <suiteXmlFile>testngOnlineMobileCloudParallel.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
