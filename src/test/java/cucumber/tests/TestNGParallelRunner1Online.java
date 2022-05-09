@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
 import utilities.ThreadLocalDriver;
 
@@ -41,9 +42,13 @@ public class TestNGParallelRunner1Online {
   @BeforeMethod
   @Parameters({"platform", "platformVersion", "browser"})
   public void setup(String platform, String platformVersion, String browser) throws IOException {
+    ConfigReader configReader = new ConfigReader();
+    String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
+    String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
+    String browserStackServer = configReader.config().getProperty("BrowserStackServer");
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
       System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
       ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver());
