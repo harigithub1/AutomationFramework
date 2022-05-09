@@ -9,6 +9,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+import utilities.ConfigReader;
 import utilities.DesiredCapabilitiesUtil;
 import utilities.ThreadLocalDriver;
 
@@ -41,12 +42,16 @@ public class TestNGParallelRunner2Mobile {
   @BeforeMethod
   @Parameters({"deviceName", "platformVersion"})
   public void setup(String deviceName, String platformVersion) throws IOException {
+    ConfigReader configReader = new ConfigReader();
+    String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
+    String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
+    String browserStackServer = configReader.config().getProperty("BrowserStackServer");
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
-        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
       else
-        ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
+        ThreadLocalDriver.setTLDriver(new IOSDriver<>(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
       ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
     }
