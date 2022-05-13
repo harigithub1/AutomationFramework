@@ -74,7 +74,7 @@ public class TestNGParallelRunner1Online {
 
   @AfterMethod
   public synchronized void teardown() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online"))
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online"))
       ThreadLocalDriver.getTLDriverOnline().quit();
     else
       ThreadLocalDriver.getTLDriverOnlineLocal().quit();
