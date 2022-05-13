@@ -2,6 +2,8 @@ package listener;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.*;
 import org.openqa.selenium.OutputType;
@@ -106,8 +108,10 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public void receive(TestStepFinished event) {
       if (event.getTestStep() instanceof PickleStepTestStep) {
         if (event.getResult().getStatus().toString().equalsIgnoreCase("passed")) {
+          test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
           test.get().pass("Test passed");
         } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
+          test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
           test.get().fail("Test failed: " + event.getResult().getError());
         } else {
           test.get().skip("Test skipped");
