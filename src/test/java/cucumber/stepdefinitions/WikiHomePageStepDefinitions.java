@@ -11,7 +11,7 @@ import utilities.ThreadLocalDriver;
 public class WikiHomePageStepDefinitions extends BaseSteps {
   @Before
   public void setupLoginSteps() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
       setupScreens(ThreadLocalDriver.getTLDriver());
     } else {
       setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());

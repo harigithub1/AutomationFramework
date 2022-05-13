@@ -64,26 +64,30 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
   public EventHandler<TestCaseStarted> eventHandlerTestCaseStarted = new EventHandler<TestCaseStarted>() {
     public void receive(TestCaseStarted event) {
       String testScenarioName = event.getTestCase().getName();
-      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
         if (String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName")).toLowerCase().contains("iphone")) {
+          // ios
           String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceName"));
           String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("os_version"));
           ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
           ptest.set(extentTest);
         } else {
-          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").contains("true")) {
+          // android
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
+            // cloud android
             String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("device"));
             String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
             ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
             ptest.set(extentTest);
           } else {
+            // local android
             String deviceName = String.valueOf(getTLDriver().getCapabilities().getCapability("deviceModel"));
             String os_version = String.valueOf(getTLDriver().getCapabilities().getCapability("platformVersion"));
             ExtentTest extentTest = extent.createTest(deviceName + " v" + os_version + ": " + testScenarioName);
             ptest.set(extentTest);
           }
         }
-      } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")) {
+      } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
         String browserName = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("browserName"));
         String platform = String.valueOf(getTLDriverOnline().getCapabilities().getCapability("platform"));
         ExtentTest extentTest = extent.createTest(platform + " " + browserName + ": " + testScenarioName);
@@ -108,20 +112,20 @@ public class CucumberListener extends ThreadLocal implements ConcurrentEventList
     public void receive(TestStepFinished event) {
       if (event.getTestStep() instanceof PickleStepTestStep) {
         if (event.getResult().getStatus().toString().equalsIgnoreCase("passed")) {
-          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")) {
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("LocalBrowser")) {
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("OnlineLocal")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
           }
           test.get().pass("Test passed");
         } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
-          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Online")) {
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("LocalBrowser")) {
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("OnlineLocal")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").contains("Mobile")) {
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
             test.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
           }
           test.get().fail("Test failed: " + event.getResult().getError());
