@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Test-Suite" parallel="tests" thread-count="5">
-    <test name="BrowserStack iPhone 13 Pro">
+    <test name="BrowserStack iPhone 13">
         <!--below cloud property is used for distinguish desired capabilities between cloud and local-->
         <parameter name="Cloud" value="true"/>
-        <parameter name="deviceName" value="iPhone 13 Pro"/>
+        <parameter name="deviceName" value="iPhone 13"/>
         <parameter name="platform" value="ios"/>
         <parameter name="platformVersion" value="15"/>
         <!--user credentials should be provided through testng xml files for parallel run-->
@@ -19,7 +19,7 @@
             <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
         </classes>
     </test>
-    <test name="BrowserStack iPhone 13 Pro 2">
+    <test name="BrowserStack iPhone 13 Pro">
         <!--below cloud property is used for distinguish desired capabilities between cloud and local-->
         <parameter name="Cloud" value="true"/>
         <parameter name="deviceName" value="iPhone 13 Pro"/>

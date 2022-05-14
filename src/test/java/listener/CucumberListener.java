@@ -16,8 +16,8 @@ import static utilities.ThreadLocalDriver.*;
 public class CucumberListener implements ConcurrentEventListener {
   public static ExtentReports extent = ThreadLocalExtent.createInstance();
 
-  public static ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
-  public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+  public static final ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
+  public static final ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
   public static String takeScreenshotAsBase64() {
     try {
