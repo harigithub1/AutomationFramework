@@ -12,9 +12,9 @@ public class WikiHomePageStepDefinitions extends BaseSteps {
   @Before
   public void setupLoginSteps() {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-      setupScreens(ThreadLocalDriver.getTLDriver());
+      setupScreens(ThreadLocalDriver.getAppiumDriverThreadLocal());
     } else {
-      setupScreensOnline(ThreadLocalDriver.getTLDriverOnline());
+      setupScreensOnline(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
     }
   }
 

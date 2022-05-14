@@ -48,10 +48,10 @@ public class TestNGParallelRunner2Online {
     String browserStackServer = configReader.config().getProperty("BrowserStackServer");
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.setTLDriverOnline(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
+      ThreadLocalDriver.setRemoteWebDriverThreadLocal(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
       System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
-      ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver());
+      ThreadLocalDriver.setWebDriverThreadLocal(new ChromeDriver());
     }
   }
 
@@ -74,9 +74,9 @@ public class TestNGParallelRunner2Online {
   @AfterMethod
   public synchronized void teardown() {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online"))
-      ThreadLocalDriver.getTLDriverOnline().quit();
+      ThreadLocalDriver.getRemoteWebDriverThreadLocal().quit();
     else
-      ThreadLocalDriver.getTLDriverOnlineLocal().quit();
+      ThreadLocalDriver.getWebDriverThreadLocal().quit();
   }
 
   @AfterClass(alwaysRun = true)
