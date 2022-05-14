@@ -50,10 +50,10 @@ public class OnlineMyntraHomePage {
     ConfigReader configReader = new ConfigReader();
     String onlineUrl = configReader.config().getProperty("OnlineUrl");
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.getTLDriverOnline().get(onlineUrl);
+      ThreadLocalDriver.getRemoteWebDriverThreadLocal().get(onlineUrl);
 //      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
     } else {
-      ThreadLocalDriver.getTLDriverOnlineLocal().get(onlineUrl);
+      ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
 //      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
     }
   }
