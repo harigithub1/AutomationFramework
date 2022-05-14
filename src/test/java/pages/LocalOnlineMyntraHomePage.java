@@ -46,7 +46,7 @@ public class LocalOnlineMyntraHomePage {
   }
 
   public void userOnHomePage() {
-      ThreadLocalDriver.getTLDriverOnlineLocal().get("https://www.myntra.com/");
+      ThreadLocalDriver.getWebDriverThreadLocal().get("https://www.myntra.com/");
 //      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
   }
 }
