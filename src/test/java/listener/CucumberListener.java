@@ -13,7 +13,7 @@ import utilities.ThreadLocalExtent;
 
 import static utilities.ThreadLocalDriver.*;
 
-public class CucumberListener extends ThreadLocal implements ConcurrentEventListener {
+public class CucumberListener implements ConcurrentEventListener {
   public static ExtentReports extent = ThreadLocalExtent.createInstance();
 
   public static ThreadLocal<ExtentTest> ptest = new ThreadLocal<>();
