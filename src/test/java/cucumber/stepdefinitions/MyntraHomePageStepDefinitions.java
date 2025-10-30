@@ -31,7 +31,7 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
     } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")){
       onlineMyntraHomePage.userOnHomePage();
     } else {
-      localOnlineMyntraHomePage.userOnHomePage();
+      localOnlineMyntraHomePageNoPF.userOnHomePage();
     }
   }
 
@@ -39,8 +39,11 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
   public void userclicksStudio(int index) {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
       myntraHomePage.clickStudio();
-    } else {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")){
       onlineMyntraHomePage.clickStudio();
+    }
+    else {
+      localOnlineMyntraHomePageNoPF.clickStudio();
     }
   }
 
