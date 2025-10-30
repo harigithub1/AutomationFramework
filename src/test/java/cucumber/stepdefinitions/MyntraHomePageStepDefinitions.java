@@ -13,69 +13,68 @@ import utilities.ThreadLocalDriver;
  */
 public class MyntraHomePageStepDefinitions extends BaseSteps {
 
-  @Before
-  public void setupLoginSteps() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-      setupScreens(ThreadLocalDriver.getAppiumDriverThreadLocal());
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")){
-      setupScreensOnline(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
-    } else {
-      setupScreensOnlineLocal(ThreadLocalDriver.getWebDriverThreadLocal());
+    @Before
+    public void setupLoginSteps() {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+            setupScreens(ThreadLocalDriver.getAppiumDriverThreadLocal());
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+            setupScreensOnline(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
+        } else {
+            setupScreensOnlineLocal(ThreadLocalDriver.getWebDriverThreadLocal());
+        }
     }
-  }
 
-  @Given("User is on home page")
-  public void userisonhomepageandtapsCategories() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-      myntraHomePage.userOnHomePage();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")){
-      onlineMyntraHomePage.userOnHomePage();
-    } else {
-      localOnlineMyntraHomePageNoPF.userOnHomePage();
+    @Given("User is on home page")
+    public void userisonhomepageandtapsCategories() {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+            myntraHomePage.userOnHomePage();
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+            onlineMyntraHomePage.userOnHomePage();
+        } else {
+            localOnlineMyntraHomePageNoPF.userOnHomePage();
+        }
     }
-  }
 
-  @When("User clicks Studio {int} Two")
-  public void userclicksStudio(int index) {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-      myntraHomePage.clickStudio();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")){
-      onlineMyntraHomePage.clickStudio();
+    @When("User clicks Studio {int} Two")
+    public void userclicksStudio(int index) {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+            myntraHomePage.clickStudio();
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+            onlineMyntraHomePage.clickStudio();
+        } else {
+            localOnlineMyntraHomePageNoPF.clickStudio();
+        }
     }
-    else {
-      localOnlineMyntraHomePageNoPF.clickStudio();
+
+    @Then("Verify Explore button")
+    public void verifyExplorebutton() {
+        myntraHomePage.assertExploreTitleIsExpected();
     }
-  }
 
-  @Then("Verify Explore button")
-  public void verifyExplorebutton() {
-    myntraHomePage.assertExploreTitleIsExpected();
-  }
+    @When("User clicks on Profile Four")
+    public void userClicksOnProfile() {
+        myntraHomePage.clickProfile();
 
-  @When("User clicks on Profile Four")
-  public void userClicksOnProfile() {
-    myntraHomePage.clickProfile();
-
-  }
-
-  @And("User clicks on Home Five")
-  public void userClicksOnHome() {
-    myntraHomePage.clickHome();
-  }
-
-  @When("User clicks on Explore Three")
-  public void userClicksOnExplore() {
-    myntraHomePage.clickExplore();
-  }
-
-  @When("User clicks on Categories One")
-  public void userClicksOnCategories() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-      myntraHomePage.clickCategories();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
-      onlineMyntraHomePage.clickCategories();
-    } else {
-      localOnlineMyntraHomePageNoPF.clickCategories();
     }
-  }
+
+    @And("User clicks on Home Five")
+    public void userClicksOnHome() {
+        myntraHomePage.clickHome();
+    }
+
+    @When("User clicks on Explore Three")
+    public void userClicksOnExplore() {
+        myntraHomePage.clickExplore();
+    }
+
+    @When("User clicks on Categories One")
+    public void userClicksOnCategories() {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+            myntraHomePage.clickCategories();
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+            onlineMyntraHomePage.clickCategories();
+        } else {
+            localOnlineMyntraHomePageNoPF.clickCategories();
+        }
+    }
 }

@@ -13,7 +13,7 @@ public class BaseSteps {
   protected WikiHomePage bsAppScreen;
   protected MyntraHomePage myntraHomePage;
   protected OnlineMyntraHomePage onlineMyntraHomePage;
-  protected LocalOnlineMyntraHomePage localOnlineMyntraHomePage;
+//  protected LocalOnlineMyntraHomePage localOnlineMyntraHomePage;
   protected LocalOnlineMyntraHomePageNoPF localOnlineMyntraHomePageNoPF;
 
   public void setupScreens(AppiumDriver<MobileElement> driver) {
@@ -26,7 +26,7 @@ public class BaseSteps {
   }
 
   public void setupScreensOnlineLocal(WebDriver driver) {
-    localOnlineMyntraHomePage = new LocalOnlineMyntraHomePage(driver);
+//    localOnlineMyntraHomePage = new LocalOnlineMyntraHomePage(driver);
     localOnlineMyntraHomePageNoPF = new LocalOnlineMyntraHomePageNoPF(driver);
   }
 }
