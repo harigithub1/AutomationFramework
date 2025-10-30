@@ -72,7 +72,7 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
     } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
       onlineMyntraHomePage.clickCategories();
     } else {
-      localOnlineMyntraHomePage.clickCategories();
+      localOnlineMyntraHomePageNoPF.clickCategories();
     }
   }
 }
