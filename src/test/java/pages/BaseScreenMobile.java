@@ -19,6 +19,14 @@ public class BaseScreenMobile {
         wait = new WebDriverWait(driver, 15);
     }
 
+    protected boolean isAndroid() {
+        return driver.getPlatformName().toLowerCase().contains("android");
+    }
+
+    protected boolean isIOS() {
+        return driver.getPlatformName().toLowerCase().contains("ios");
+    }
+
     protected void waitAndClick(By by) { wait.until(ExpectedConditions.visibilityOfElementLocated(by)).click(); }
 
     protected void click(By by) {
