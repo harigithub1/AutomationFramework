@@ -19,18 +19,12 @@ public class LocalOnlineMyntraHomePageNoPF extends BaseScreen {
    * Actions
    */
   public void clickStudio() {
-    if (wait.until(ExpectedConditions.visibilityOfElementLocated(kidsCategoryButton)).isDisplayed()) {
-      wait.until(ExpectedConditions.visibilityOfElementLocated(kidsCategoryButton)).click();
-    }
+    waitAndClick(kidsCategoryButton);
 //    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
   }
 
   public void clickCategories() {
-    if (wait.until(ExpectedConditions.visibilityOfElementLocated(womenCategoryButton)).isDisplayed()) {
-      wait.until(ExpectedConditions.visibilityOfElementLocated(womenCategoryButton)).click();
-    }
-
-//    getWomenCategoryButton().click();
+    waitAndClick(womenCategoryButton);
 //    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
   }
 
