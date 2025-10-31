@@ -1,5 +1,5 @@
 # Automation Testing Framework
-Cucumber-Java-Maven based Automation framework for Mobile & Web Application testing.
+Selenium+Appium Automation framework for Web & Moblie Application testing.
 
 ## To Run Tests on Local device
 - Start appium server at 0.0.0.0 at port 4723
