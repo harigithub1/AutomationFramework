@@ -73,7 +73,7 @@ public class TestNGParallelRunner2Web {
 
   @AfterMethod
   public synchronized void teardown() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online"))
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud"))
       ThreadLocalDriver.getRemoteWebDriverThreadLocal().quit();
     else
       ThreadLocalDriver.getWebDriverThreadLocal().quit();

@@ -21,16 +21,16 @@ public class WebLocalMyntraHomePage extends BaseScreenWeb {
     ConfigReader configReader = new ConfigReader();
     String onlineUrl = configReader.config().getProperty("OnlineUrl");
     ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
-//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
+//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
   }
 
   public void clickStudio() {
     waitAndClick(kidsCategoryButton);
-//    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
+//    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebCloud()).build());
   }
 
   public void clickCategories() {
     waitAndClick(womenCategoryButton);
-//    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
+//    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
   }
 }

@@ -12,7 +12,7 @@
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
         <!--below OnlineOrMobile parameter is used to decide whether AppiumDriver or RemoteWebDriver should be instantiated-->
-        <parameter name="OnlineOrMobile" value="OnlineLocal"/>
+        <parameter name="WebOrMobile" value="WebLocal"/>
         <classes>
             <class name="cucumber.tests.TestNGSequentialRunnerWeb"/>
         </classes>

@@ -28,7 +28,7 @@ public class CucumberListener implements ConcurrentEventListener {
     return ((TakesScreenshot) getAppiumDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
-  public static String takeScreenshotAsBase64Online() {
+  public static String takeScreenshotAsBase64WebCloud() {
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
@@ -37,7 +37,7 @@ public class CucumberListener implements ConcurrentEventListener {
     return ((TakesScreenshot) getRemoteWebDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
-  public static String takeScreenshotAsBase64OnlineLocal() {
+  public static String takeScreenshotAsBase64WebLocal() {
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
@@ -64,7 +64,7 @@ public class CucumberListener implements ConcurrentEventListener {
   public EventHandler<TestCaseStarted> eventHandlerTestCaseStarted = new EventHandler<TestCaseStarted>() {
     public void receive(TestCaseStarted event) {
       String testScenarioName = event.getTestCase().getName();
-      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
         if (String.valueOf(getAppiumDriverThreadLocal().getCapabilities().getCapability("deviceName")).toLowerCase().contains("iphone")) {
           // ios
           String deviceName = String.valueOf(getAppiumDriverThreadLocal().getCapabilities().getCapability("deviceName"));
@@ -87,7 +87,7 @@ public class CucumberListener implements ConcurrentEventListener {
             extentTestThreadLocalTestCase.set(extentTest);
           }
         }
-      } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+      } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
         String browserName = String.valueOf(getRemoteWebDriverThreadLocal().getCapabilities().getCapability("browserName"));
         String platform = String.valueOf(getRemoteWebDriverThreadLocal().getCapabilities().getCapability("platform"));
         ExtentTest extentTest = extentReports.createTest(platform + " " + browserName + ": " + testScenarioName);
@@ -112,20 +112,20 @@ public class CucumberListener implements ConcurrentEventListener {
     public void receive(TestStepFinished event) {
       if (event.getTestStep() instanceof PickleStepTestStep) {
         if (event.getResult().getStatus().toString().equalsIgnoreCase("passed")) {
-          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("OnlineLocal")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebCloud()).build());
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebLocal")) {
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
             extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
           }
           extentTestThreadLocalTestStep.get().pass("Test passed");
         } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
-          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("OnlineLocal")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+          if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebCloud()).build());
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebLocal")) {
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
+          } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
             extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
           }
           extentTestThreadLocalTestStep.get().fail("Test failed: " + event.getResult().getError());

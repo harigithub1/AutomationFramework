@@ -9,10 +9,10 @@ import utilities.ThreadLocalDriver;
 public class WikiHomePageStepDefinitions extends BaseSteps {
   @Before
   public void setupLoginSteps() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
       //mobile code - for both cloud/local
       setupScreensMobile(ThreadLocalDriver.getAppiumDriverThreadLocal());
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
       //web code - for cloud
       setupScreensWebCloud(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
     } else {
@@ -23,10 +23,10 @@ public class WikiHomePageStepDefinitions extends BaseSteps {
 
   @Given("User is on Wiki home page")
   public void userIsOnBSHomePage() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
       //mobile code - for both cloud/local
       mobileWikiHomePage.userOnWikiHomePage();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
       //web code - for cloud
     } else {
       //web code - for local
@@ -35,10 +35,10 @@ public class WikiHomePageStepDefinitions extends BaseSteps {
 
   @When("User clicks List One")
   public void userClicksList() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
       //mobile code - for both cloud/local
       mobileWikiHomePage.clickListElement();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
       //web code - for cloud
     } else {
       //web code - for local
@@ -47,10 +47,10 @@ public class WikiHomePageStepDefinitions extends BaseSteps {
 
   @When("User clicks History Two")
   public void userClicksButton() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
       //mobile code - for both cloud/local
       mobileWikiHomePage.clickHistoryElement();
-    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+    } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
       //web code - for cloud
     } else {
       //web code - for local

@@ -13,10 +13,10 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @Before
     public void setupLoginSteps() {
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
             //mobile code - for both cloud/local
             setupScreensMobile(ThreadLocalDriver.getAppiumDriverThreadLocal());
-        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
             //web code - for cloud
             setupScreensWebCloud(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
         } else {
@@ -27,9 +27,9 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @Given("User is on home page")
     public void userisonhomepageandtapsCategories() {
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
             //mobile code - for both cloud/local
-        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
             //web code - for cloud
             webCloudMyntraHomePage.userOnHomePage();
         } else {
@@ -40,8 +40,8 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @When("User clicks Studio {int} Two")
     public void userclicksStudio(int index) {
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
             webCloudMyntraHomePage.clickStudio();
         } else {
             webLocalMyntraHomePage.clickStudio();
@@ -50,8 +50,8 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
 
     @When("User clicks on Categories One")
     public void userClicksOnCategories() {
-        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
-        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
+        if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
+        } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud")) {
             webCloudMyntraHomePage.clickCategories();
         } else {
             webLocalMyntraHomePage.clickCategories();
