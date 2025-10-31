@@ -12,25 +12,25 @@ public class MobileWikiHomePage extends BaseScreenMobile {
   /**
    * Mobile Elements
    */
+  private final By OKAndroid = By.xpath("//*[@name='OK' or @text='OK']");
+  private final By OKIOS = By.xpath("//*[@name='username' or @label='username']");
+  private By Ok() {
+    return isAndroid() ? OKAndroid : OKIOS;
+  }
+
   private final By ListByAndroid = By.xpath("(//*[@resource-id='org.wikipedia.alpha:id/icon'])[2]");
   private final By ListByIOS = By.xpath("//*[@name='username' or @label='username']");
-  private final By OKIOS = By.xpath("//*[@name='username' or @label='username']");
-
-  private final By HistoryOrOkAndroid = By.xpath("//*[@resource-id='com.example:id/password' or @content-desc='password']");
-  private final By HistoryOrOkIOS = By.xpath("//*[@name='password' or @label='password']");
-  private final By OKAndroid = By.xpath("//*[@name='OK' or @text='OK']");
-
   private By ListBy() {
     return isAndroid() ? ListByAndroid : ListByIOS;
   }
 
+  private final By HistoryOrOkAndroid = By.xpath("//*[@resource-id='com.example:id/password' or @content-desc='password']");
+  private final By HistoryOrOkIOS = By.xpath("//*[@name='password' or @label='password']");
   private By HistoryOrOk() {
     return isAndroid() ? HistoryOrOkAndroid : HistoryOrOkIOS;
   }
+  
 
-  private By Ok() {
-    return isAndroid() ? OKAndroid : OKIOS;
-  }
   /**
    * Actions
    */
