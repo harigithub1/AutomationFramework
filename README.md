@@ -2,7 +2,7 @@
 Selenium+Appium Test Automation Framework for both Web & Moblie Applications.
 
 ## To Run Tests on Local device
-- Start appium server at 0.0.0.0 at port 4723
+- Start appium server in command line using command ``appium``
 - For parallel testing use parallel testNG local xml files. 
 - Update Thread count in testng xml file
 - Update Tag in runner class in src/test/java/cucumber/tests
