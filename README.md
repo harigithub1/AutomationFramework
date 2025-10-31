@@ -28,13 +28,12 @@ Selenium+Appium Automation framework for Web & Moblie Application testing.
   https://api.browserstack.com/automate/sessions/<session-id>/appiumlogs
   ``
 ## Setup For Local Device Execution
-- ### Softwares:
-- JDK (v11)
+- ### Software:
+- JDK (v17)
 - Android Studio (for adb and for executing on android virtual devices)
-- Appium (v1.21)
+- Appium (3.1.0 - using node)
 - IntelliJ
 - Git
-- Maven
 
 - ### Set Env variables in Windows machine:
 - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
