@@ -29,7 +29,7 @@ public class MobileWikiHomePage extends BaseScreenMobile {
   private By HistoryOrOk() {
     return isAndroid() ? HistoryOrOkAndroid : HistoryOrOkIOS;
   }
-  
+
 
   /**
    * Actions
@@ -46,6 +46,7 @@ public class MobileWikiHomePage extends BaseScreenMobile {
 //    test.get().log(Status.INFO, "Clicked History/OK", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
 
+  @SneakyThrows
   public void userOnWikiHomePage() {
     waitAndClick(Ok());
   }
