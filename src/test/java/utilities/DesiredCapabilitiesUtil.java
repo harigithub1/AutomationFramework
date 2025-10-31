@@ -5,62 +5,84 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 
 public class DesiredCapabilitiesUtil {
+
   public DesiredCapabilities getDesiredCapabilities(String deviceName, String platformVersion) {
     ConfigReader configReader = new ConfigReader();
     String browserStackAppURLAndroid = configReader.config().getProperty("BrowserStackAppURLAndroid");
     String browserStackAppURLIos = configReader.config().getProperty("BrowserStackAppURLIos");
+
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
-            .getParameter("Cloud").equalsIgnoreCase("true")) {
+
+    boolean isCloud = Reporter.getCurrentTestResult()
+            .getTestContext().getCurrentXmlTest()
+            .getParameter("Cloud").equalsIgnoreCase("true");
+
+    if (isCloud) {
+      // --- BrowserStack (Cloud) Capabilities ---
       desiredCapabilities.setCapability("deviceName", deviceName);
-      desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
-      desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
+      desiredCapabilities.setCapability("platformName", "Android");
+      desiredCapabilities.setCapability("platformVersion", platformVersion);
+      desiredCapabilities.setCapability("appium:appPackage", "com.cogmento.app");
+      desiredCapabilities.setCapability("appium:appActivity", "com.cogmento.app.MainActivity");
+
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
-              .getParameter("platform").equalsIgnoreCase("android"))
+              .getParameter("platform").equalsIgnoreCase("android")) {
         desiredCapabilities.setCapability("app", browserStackAppURLAndroid);
-      else
+      } else {
         desiredCapabilities.setCapability("app", browserStackAppURLIos);
+      }
+
       desiredCapabilities.setCapability("browserstack.video", "true");
       desiredCapabilities.setCapability("project", "Mobile Automation Project");
       desiredCapabilities.setCapability("build", "Mobile Automation Build");
       desiredCapabilities.setCapability("name", "Mobile Automation Name");
+
     } else {
-      desiredCapabilities.setCapability("udid", deviceName);
-      desiredCapabilities.setCapability("appPackage", "com.myntra.android");
-      desiredCapabilities.setCapability("appActivity", "com.myntra.android.SplashActivity");
+      // --- Local Execution (Appium) ---
+      desiredCapabilities.setCapability("platformName", "Android");
+      desiredCapabilities.setCapability("appium:platformVersion", platformVersion);
+      desiredCapabilities.setCapability("appium:deviceName", deviceName);
+      desiredCapabilities.setCapability("appium:udid", "emulator-5554");
+      desiredCapabilities.setCapability("appium:appPackage", "org.wikipedia.alpha");
+      desiredCapabilities.setCapability("appium:appActivity", "org.wikipedia.main.MainActivity");
+      desiredCapabilities.setCapability("appium:noReset", false);
+      desiredCapabilities.setCapability("appium:skipUnlock", true);
+      desiredCapabilities.setCapability("appium:automationName", "UiAutomator2");
     }
-    desiredCapabilities.setCapability("platformVersion", platformVersion);
-//        desiredCapabilities.setCapability("platformName", "Android");
-    desiredCapabilities.setCapability("skipUnlock", "true");
-    desiredCapabilities.setCapability("noReset", "false");
+
     return desiredCapabilities;
   }
 
   public DesiredCapabilities getDesiredCapabilitiesOnline(String platform, String platformVersion, String browser) {
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
-            .getParameter("Cloud").equalsIgnoreCase("true")) {
+
+    boolean isCloud = Reporter.getCurrentTestResult()
+            .getTestContext().getCurrentXmlTest()
+            .getParameter("Cloud").equalsIgnoreCase("true");
+
+    if (isCloud) {
       desiredCapabilities.setCapability("os", platform);
       desiredCapabilities.setCapability("os_version", platformVersion);
       desiredCapabilities.setCapability("browser", browser);
+
       if (platform.toLowerCase().contains("windows")) {
         desiredCapabilities.setCapability("resolution", "1366x768");
-      }
-      if (platform.toLowerCase().contains("os x")) {
+      } else if (platform.toLowerCase().contains("os x")) {
         desiredCapabilities.setCapability("resolution", "1280x960");
       }
+
       if (browser.equalsIgnoreCase("safari")) {
         desiredCapabilities.setCapability("browser_version", "15.1");
       } else {
         desiredCapabilities.setCapability("browser_version", "latest");
       }
+
       desiredCapabilities.setCapability("browserstack.video", "true");
       desiredCapabilities.setCapability("project", "ProjectName");
       desiredCapabilities.setCapability("build", "BuildName");
       desiredCapabilities.setCapability("name", "TestName");
-    } else {
-      desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
     }
+
     return desiredCapabilities;
   }
 }

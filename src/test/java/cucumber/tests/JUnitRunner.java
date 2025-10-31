@@ -51,7 +51,7 @@ public class JUnitRunner {
 //        desiredCapabilities.setCapability("project","Mobile Automation Project");
 //        desiredCapabilities.setCapability("build","Mobile Automation Build");
 //        desiredCapabilities.setCapability("name","Mobile Automation Name");
-    ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), desiredCapabilities));
+    ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), desiredCapabilities));
 //        ThreadLocalDriver.setTLDriver(new AndroidDriver<>(new URL("http://" + "haribabumaila_Elu5RJ" + ":" + "nSqD7s61yDhRpefqbTRb" + "@" + "hub-cloud.browserstack.com" + "/wd/hub"), caps));
   }
 

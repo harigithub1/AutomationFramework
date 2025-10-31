@@ -3,18 +3,18 @@ package pages;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import listener.CucumberListener;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class MyntraHomePage {
-  public MyntraHomePage(AppiumDriver<MobileElement> driver) {
+  public MyntraHomePage(AppiumDriver driver) {
     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
   }
 
@@ -23,49 +23,49 @@ public class MyntraHomePage {
    */
   @AndroidFindBy(xpath = "//*[@text='Studio']")
   @iOSXCUITFindBy(xpath = "//*[@text='Studio']")
-  MobileElement studio;
+  WebElement studio;
 
-  public MobileElement getStudio() {
+  public WebElement getStudio() {
     return studio;
   }
 
   @AndroidFindBy(xpath = "//*[@text='Profile']")
   @iOSXCUITFindBy(xpath = "//*[@text='Profile']")
-  MobileElement Profile;
+  WebElement Profile;
 
-  public MobileElement getProfile() {
+  public WebElement getProfile() {
     return Profile;
   }
 
   @AndroidFindBy(xpath = "//*[@text='Home']")
   @iOSXCUITFindBy(xpath = "//*[@text='Home']")
-  MobileElement Home;
+  WebElement Home;
 
-  public MobileElement getHome() {
+  public WebElement getHome() {
     return Home;
   }
 
   @AndroidFindBy(xpath = "//*[@text='Explore']")
   @iOSXCUITFindBy(xpath = "//*[@text='Explore']")
-  MobileElement Explore;
+  WebElement Explore;
 
-  public MobileElement getExplore() {
+  public WebElement getExplore() {
     return Explore;
   }
 
   @AndroidFindBy(xpath = "//*[@text='Categories']")
   @iOSXCUITFindBy(xpath = "//*[@text='Categories']")
-  MobileElement Categories;
+  WebElement Categories;
 
-  public MobileElement getCategories() {
+  public WebElement getCategories() {
     return Categories;
   }
 
   @AndroidFindBy(xpath = "//*[@text='Explore']")
   @iOSXCUITFindBy(xpath = "//*[@text='Explore']")
-  MobileElement ExploreTitle;
+  WebElement ExploreTitle;
 
-  public MobileElement getExploreTitle() {
+  public WebElement getExploreTitle() {
     return ExploreTitle;
   }
 

@@ -1,21 +1,21 @@
 package utilities;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ThreadLocalDriver {
 
-  private static final ThreadLocal<AppiumDriver<MobileElement>> appiumDriverThreadLocal = new ThreadLocal<>();
+  private static final ThreadLocal<AppiumDriver> appiumDriverThreadLocal = new ThreadLocal<>();
   private static final ThreadLocal<RemoteWebDriver> remoteWebDriverThreadLocal = new ThreadLocal<>();
   private static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 
-  public static synchronized void setAppiumDriverThreadLocal(AppiumDriver<MobileElement> driver) {
+  public static synchronized void setAppiumDriverThreadLocal(AppiumDriver driver) {
     appiumDriverThreadLocal.set(driver);
   }
 
-  public static synchronized AppiumDriver<MobileElement> getAppiumDriverThreadLocal() {
+  public static synchronized AppiumDriver getAppiumDriverThreadLocal() {
     return appiumDriverThreadLocal.get();
   }
 

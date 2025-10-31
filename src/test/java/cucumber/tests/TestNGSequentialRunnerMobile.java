@@ -18,7 +18,7 @@ import java.net.URL;
 
 @CucumberOptions(
         monochrome = true,
-        tags = "@MyntraScenario",
+        tags = "@WikiScenario",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -46,11 +46,11 @@ public class TestNGSequentialRunnerMobile {
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
-        ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver<>(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
+        ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
       else
-        ThreadLocalDriver.setAppiumDriverThreadLocal(new IOSDriver<>(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
+        ThreadLocalDriver.setAppiumDriverThreadLocal(new IOSDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
-      ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), caps));
+      ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps));
     }
   }
 
