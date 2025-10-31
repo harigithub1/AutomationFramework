@@ -1,17 +1,11 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.WebDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-public class WikiHomePageNoPF extends BaseScreenMobile {
-  public WikiHomePageNoPF(AppiumDriver driver) {
+public class MobileWikiHomePage extends BaseScreenMobile {
+  public MobileWikiHomePage(AppiumDriver driver) {
     super(driver);
   }
 
@@ -40,7 +34,6 @@ public class WikiHomePageNoPF extends BaseScreenMobile {
    */
   @SneakyThrows
   public void clickListElement() {
-    waitAndClick(Ok());
     waitAndClick(ListBy());
 //    test.get().log(Status.INFO, "Clicked List/Alert", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
   }
@@ -49,5 +42,9 @@ public class WikiHomePageNoPF extends BaseScreenMobile {
   public void clickHistoryElement() {
     waitAndClick(HistoryOrOk());
 //    test.get().log(Status.INFO, "Clicked History/OK", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+  }
+
+  public void userOnWikiHomePage() {
+    waitAndClick(Ok());
   }
 }

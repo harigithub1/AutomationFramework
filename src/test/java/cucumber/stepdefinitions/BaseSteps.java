@@ -9,23 +9,19 @@ import pages.*;
  * this class is used to initialize page classes with driver.
  */
 public class BaseSteps {
-  protected OnlineMyntraHomePage onlineMyntraHomePage;
-//  protected LocalOnlineMyntraHomePage localOnlineMyntraHomePage;
-  protected LocalOnlineMyntraHomePageNoPF localOnlineMyntraHomePageNoPF;
-  protected WikiHomePageNoPF wikiHomePageNoPF;
-  protected MyntraHomePage myntraHomePage;
+    protected WebCloudOnlineMyntraHomePage webCloudOnlineMyntraHomePage;
+    protected WebLocalOnlineMyntraHomePage webLocalOnlineMyntraHomePage;
+    protected MobileWikiHomePage mobileWikiHomePage;
 
-  public void setupScreens(AppiumDriver driver) {
-    wikiHomePageNoPF = new WikiHomePageNoPF(driver);
-    myntraHomePage = new MyntraHomePage(driver);
-  }
+    public void setupScreensMobile(AppiumDriver driver) {
+        mobileWikiHomePage = new MobileWikiHomePage(driver);
+    }
 
-  public void setupScreensOnline(RemoteWebDriver driver) {
-    onlineMyntraHomePage = new OnlineMyntraHomePage(driver);
-  }
+    public void setupScreensWebCloud(RemoteWebDriver driver) {
+        webCloudOnlineMyntraHomePage = new WebCloudOnlineMyntraHomePage(driver);
+    }
 
-  public void setupScreensOnlineLocal(WebDriver driver) {
-//    localOnlineMyntraHomePage = new LocalOnlineMyntraHomePage(driver);
-    localOnlineMyntraHomePageNoPF = new LocalOnlineMyntraHomePageNoPF(driver);
-  }
+    public void setupScreensWebLocal(WebDriver driver) {
+        webLocalOnlineMyntraHomePage = new WebLocalOnlineMyntraHomePage(driver);
+    }
 }

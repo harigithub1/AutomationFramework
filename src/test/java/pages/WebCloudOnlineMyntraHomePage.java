@@ -1,0 +1,45 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Reporter;
+import utilities.ConfigReader;
+import utilities.ThreadLocalDriver;
+
+public class WebCloudOnlineMyntraHomePage extends BaseScreenWeb{
+  public WebCloudOnlineMyntraHomePage(RemoteWebDriver driver) {
+    super(driver);
+  }
+
+  /**
+   * Mobile Elements
+   */
+  /**Mobile Elements*/
+  By womenCategoryButton = By.xpath("//*[text()='Women']");
+  By kidsCategoryButton = By.xpath("//*[text()='Kids']");
+
+  /**
+   * Actions
+   */
+  public void userOnHomePage() {
+    ConfigReader configReader = new ConfigReader();
+    String onlineUrl = configReader.config().getProperty("OnlineUrl");
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
+      ThreadLocalDriver.getRemoteWebDriverThreadLocal().get(onlineUrl);
+//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
+    } else {
+      ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
+//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
+    }
+  }
+
+  public void clickStudio() {
+    waitAndClick(kidsCategoryButton);
+//    test.get().log(Status.INFO, "Clicked Studio", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
+  }
+
+  public void clickCategories() {
+    waitAndClick(womenCategoryButton);
+//    test.get().log(Status.INFO, "Clicked Home", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
+  }
+}
