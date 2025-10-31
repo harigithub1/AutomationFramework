@@ -12,19 +12,12 @@ public class DesiredCapabilitiesUtil {
     String browserStackAppURLIos = configReader.config().getProperty("BrowserStackAppURLIos");
 
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-
-    boolean isCloud = Reporter.getCurrentTestResult()
-            .getTestContext().getCurrentXmlTest()
-            .getParameter("Cloud").equalsIgnoreCase("true");
-
-    if (isCloud) {
-      // --- BrowserStack (Cloud) Capabilities ---
+    
+    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
+            .getParameter("Cloud").equalsIgnoreCase("true")) {
       desiredCapabilities.setCapability("deviceName", deviceName);
-      desiredCapabilities.setCapability("platformName", "Android");
-      desiredCapabilities.setCapability("platformVersion", platformVersion);
-      desiredCapabilities.setCapability("appium:appPackage", "com.cogmento.app");
-      desiredCapabilities.setCapability("appium:appActivity", "com.cogmento.app.MainActivity");
-
+      desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
+      desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
               .getParameter("platform").equalsIgnoreCase("android")) {
         desiredCapabilities.setCapability("app", browserStackAppURLAndroid);
@@ -36,20 +29,19 @@ public class DesiredCapabilitiesUtil {
       desiredCapabilities.setCapability("project", "Mobile Automation Project");
       desiredCapabilities.setCapability("build", "Mobile Automation Build");
       desiredCapabilities.setCapability("name", "Mobile Automation Name");
-
+      desiredCapabilities.setCapability("platformVersion", platformVersion);
+      desiredCapabilities.setCapability("skipUnlock", "true");
+      desiredCapabilities.setCapability("noReset", "false");
     } else {
-      // --- Local Execution (Appium) ---
       desiredCapabilities.setCapability("platformName", "Android");
       desiredCapabilities.setCapability("appium:platformVersion", platformVersion);
       desiredCapabilities.setCapability("appium:deviceName", deviceName);
-      desiredCapabilities.setCapability("appium:udid", "emulator-5554");
       desiredCapabilities.setCapability("appium:appPackage", "org.wikipedia.alpha");
       desiredCapabilities.setCapability("appium:appActivity", "org.wikipedia.main.MainActivity");
       desiredCapabilities.setCapability("appium:noReset", false);
       desiredCapabilities.setCapability("appium:skipUnlock", true);
       desiredCapabilities.setCapability("appium:automationName", "UiAutomator2");
     }
-
     return desiredCapabilities;
   }
 
