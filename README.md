@@ -12,13 +12,12 @@ Selenium+Appium Automation framework for Web & Moblie Application testing.
 
 ## To Run Tests on Browserstack device
 - For parallel testing use parallel testNG cloud xml files.
-- Update Thread count in testngCloud.xml
-- Update Tag in TestNGParallelRunner1Mobile,2 for mobile
-- Update Tag in TestNGParallelRunner1Online,2 for online
+- Update Thread count in testng xml file
+- Update Tag in runner class in src/test/java/cucumber/tests
 
 ## Framework Features:
-- Mobile App Testing (On both local and cloud)
-- Web App Testing (On cloud)
+- Mobile App Testing (both local and cloud)
+- Web App Testing (both local and cloud)
 - Parallel Testing
 - Jira integration
 - Jenkins integration
