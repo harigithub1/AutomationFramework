@@ -35,6 +35,11 @@ public class MobileWikiHomePage extends BaseScreenMobile {
    * Actions
    */
   @SneakyThrows
+  public void userOnWikiHomePage() {
+    waitAndClick(Ok());
+  }
+
+  @SneakyThrows
   public void clickListElement() {
     waitAndClick(ListBy());
 //    test.get().log(Status.INFO, "Clicked List/Alert", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
@@ -44,10 +49,5 @@ public class MobileWikiHomePage extends BaseScreenMobile {
   public void clickHistoryElement() {
     waitAndClick(HistoryOrOk());
 //    test.get().log(Status.INFO, "Clicked History/OK", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
-  }
-
-  @SneakyThrows
-  public void userOnWikiHomePage() {
-    waitAndClick(Ok());
   }
 }

@@ -15,7 +15,7 @@
         <parameter name="password" value="password@123"/>
         <!--below OnlineOrMobile parameter is used to decide whether-->
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
-        <parameter name="OnlineOrMobile" value="Online"/>
+        <parameter name="WebOrMobile" value="WebCloud"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner1Web"/>
         </classes>
@@ -33,7 +33,7 @@
         <parameter name="password" value="password@123"/>
         <!--below OnlineOrMobile parameter is used to decide whether-->
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
-        <parameter name="OnlineOrMobile" value="Online"/>
+        <parameter name="WebOrMobile" value="WebCloud"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner2Web"/>
         </classes>
@@ -50,7 +50,7 @@
         <parameter name="password" value="password@123"/>
         <!--below OnlineOrMobile parameter is used to decide whether-->
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
-        <parameter name="OnlineOrMobile" value="Mobile"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
         </classes>
@@ -67,7 +67,7 @@
         <parameter name="password" value="password@123"/>
         <!--below OnlineOrMobile parameter is used to decide whether-->
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
-        <parameter name="OnlineOrMobile" value="Mobile"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner2Mobile"/>
         </classes>

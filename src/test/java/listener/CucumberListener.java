@@ -19,30 +19,15 @@ public class CucumberListener implements ConcurrentEventListener {
   public static final ThreadLocal<ExtentTest> extentTestThreadLocalTestCase = new ThreadLocal<>();
   public static final ThreadLocal<ExtentTest> extentTestThreadLocalTestStep = new ThreadLocal<>();
 
-  public static String takeScreenshotAsBase64() {
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+  public static String takeScreenshotAsBase64Mobile() {
     return ((TakesScreenshot) getAppiumDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
   public static String takeScreenshotAsBase64WebCloud() {
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     return ((TakesScreenshot) getRemoteWebDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
   public static String takeScreenshotAsBase64WebLocal() {
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     return ((TakesScreenshot) getWebDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
   }
 
@@ -117,7 +102,7 @@ public class CucumberListener implements ConcurrentEventListener {
           } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebLocal")) {
             extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
           } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Mobile()).build());
           }
           extentTestThreadLocalTestStep.get().pass("Test passed");
         } else if (event.getResult().getStatus().toString().equalsIgnoreCase("failed")) {
@@ -126,7 +111,7 @@ public class CucumberListener implements ConcurrentEventListener {
           } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebLocal")) {
             extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
           } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile")) {
-            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64()).build());
+            extentTestThreadLocalTestStep.get().log(Status.INFO, "Screenshot", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Mobile()).build());
           }
           extentTestThreadLocalTestStep.get().fail("Test failed: " + event.getResult().getError());
         } else {
