@@ -8,10 +8,7 @@ Selenium+Appium Automation framework for Web & Moblie Application testing.
 - Update Tag in TestNGParallelRunner*
 
 ## Maven commands
-- ``mvn clean test -PMobileCloudParallel``
-- ``mvn clean test -PMobileCloudSequential``
-- ``mvn clean test -POnlineCloudParallel``
-- ``mvn clean test -POnlineCloudSequential``
+- ``mvn clean test -P<profile name>``
 
 ## To Run Tests on Browserstack device
 - For parallel testing use parallel testNG cloud xml files.
