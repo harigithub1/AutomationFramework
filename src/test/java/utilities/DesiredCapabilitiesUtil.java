@@ -12,7 +12,7 @@ public class DesiredCapabilitiesUtil {
     String browserStackAppURLIos = configReader.config().getProperty("BrowserStackAppURLIos");
 
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    
+
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
             .getParameter("Cloud").equalsIgnoreCase("true")) {
       desiredCapabilities.setCapability("deviceName", deviceName);
