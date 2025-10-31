@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Myntra-Android-Test-Suite">
-    <test name="Local A71">
+    <test name="Mobile">
         <!--below cloud property is used for distinguish desired capabilities between cloud and local-->
         <parameter name="Cloud" value="false"/>
         <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
