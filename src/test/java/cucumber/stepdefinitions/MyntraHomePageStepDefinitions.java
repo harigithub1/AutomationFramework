@@ -31,10 +31,10 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
             //mobile code - for both cloud/local
         } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
             //web code - for cloud
-            webCloudOnlineMyntraHomePage.userOnHomePage();
+            webCloudMyntraHomePage.userOnHomePage();
         } else {
             //web code - for local
-            webLocalOnlineMyntraHomePage.userOnHomePage();
+            webLocalMyntraHomePage.userOnHomePage();
         }
     }
 
@@ -42,9 +42,9 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
     public void userclicksStudio(int index) {
         if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
         } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
-            webCloudOnlineMyntraHomePage.clickStudio();
+            webCloudMyntraHomePage.clickStudio();
         } else {
-            webLocalOnlineMyntraHomePage.clickStudio();
+            webLocalMyntraHomePage.clickStudio();
         }
     }
 
@@ -52,9 +52,9 @@ public class MyntraHomePageStepDefinitions extends BaseSteps {
     public void userClicksOnCategories() {
         if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Mobile")) {
         } else if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("OnlineOrMobile").equalsIgnoreCase("Online")) {
-            webCloudOnlineMyntraHomePage.clickCategories();
+            webCloudMyntraHomePage.clickCategories();
         } else {
-            webLocalOnlineMyntraHomePage.clickCategories();
+            webLocalMyntraHomePage.clickCategories();
         }
     }
 }

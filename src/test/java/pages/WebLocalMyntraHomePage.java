@@ -1,20 +1,16 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Reporter;
+import org.openqa.selenium.WebDriver;
 import utilities.ConfigReader;
 import utilities.ThreadLocalDriver;
 
-public class WebCloudOnlineMyntraHomePage extends BaseScreenWeb{
-  public WebCloudOnlineMyntraHomePage(RemoteWebDriver driver) {
-    super(driver);
-  }
+public class WebLocalMyntraHomePage extends BaseScreenWeb {
+  public WebLocalMyntraHomePage(WebDriver driver) {super(driver);}
 
   /**
-   * Mobile Elements
+   * Web Elements
    */
-  /**Mobile Elements*/
   By womenCategoryButton = By.xpath("//*[text()='Women']");
   By kidsCategoryButton = By.xpath("//*[text()='Kids']");
 
@@ -24,13 +20,8 @@ public class WebCloudOnlineMyntraHomePage extends BaseScreenWeb{
   public void userOnHomePage() {
     ConfigReader configReader = new ConfigReader();
     String onlineUrl = configReader.config().getProperty("OnlineUrl");
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.getRemoteWebDriverThreadLocal().get(onlineUrl);
-//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64Online()).build());
-    } else {
-      ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
+    ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
 //      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64OnlineLocal()).build());
-    }
   }
 
   public void clickStudio() {

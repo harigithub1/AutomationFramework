@@ -9,8 +9,8 @@ import pages.*;
  * this class is used to initialize page classes with driver.
  */
 public class BaseSteps {
-    protected WebCloudOnlineMyntraHomePage webCloudOnlineMyntraHomePage;
-    protected WebLocalOnlineMyntraHomePage webLocalOnlineMyntraHomePage;
+    protected WebCloudMyntraHomePage webCloudMyntraHomePage;
+    protected WebLocalMyntraHomePage webLocalMyntraHomePage;
     protected MobileWikiHomePage mobileWikiHomePage;
 
     public void setupScreensMobile(AppiumDriver driver) {
@@ -18,10 +18,10 @@ public class BaseSteps {
     }
 
     public void setupScreensWebCloud(RemoteWebDriver driver) {
-        webCloudOnlineMyntraHomePage = new WebCloudOnlineMyntraHomePage(driver);
+        webCloudMyntraHomePage = new WebCloudMyntraHomePage(driver);
     }
 
     public void setupScreensWebLocal(WebDriver driver) {
-        webLocalOnlineMyntraHomePage = new WebLocalOnlineMyntraHomePage(driver);
+        webLocalMyntraHomePage = new WebLocalMyntraHomePage(driver);
     }
 }

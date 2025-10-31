@@ -9,7 +9,9 @@ public class MobileWikiHomePage extends BaseScreenMobile {
     super(driver);
   }
 
-  // XPath locators for android and ios
+  /**
+   * Mobile Elements
+   */
   private final By ListByAndroid = By.xpath("(//*[@resource-id='org.wikipedia.alpha:id/icon'])[2]");
   private final By ListByIOS = By.xpath("//*[@name='username' or @label='username']");
   private final By OKIOS = By.xpath("//*[@name='username' or @label='username']");
