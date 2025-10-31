@@ -53,7 +53,7 @@ public class TestNGParallelRunner1Mobile {
       else
         ThreadLocalDriver.setAppiumDriverThreadLocal(new IOSDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
-      ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), caps));
+      ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps));
     }
   }
 

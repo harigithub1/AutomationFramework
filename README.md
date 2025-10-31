@@ -29,7 +29,7 @@ Selenium+Appium Test Automation Framework for both Web & Moblie Applications.
   ``
 ## Setup For Local Device Execution
 - ### Software
-- JDK (v17)
+- Microsoft OpenJDK (v17)
 - Android Studio (for adb and for executing on android virtual devices)
 - Appium (3.1.0 - using node)
 - IntelliJ
