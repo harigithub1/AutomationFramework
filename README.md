@@ -1,5 +1,5 @@
 # Automation Testing Framework
-Selenium+Appium Automation framework for Web & Moblie Application testing.
+Selenium+Appium Test Automation Framework for both Web & Moblie Applications.
 
 ## To Run Tests on Local device
 - Start appium server at 0.0.0.0 at port 4723
