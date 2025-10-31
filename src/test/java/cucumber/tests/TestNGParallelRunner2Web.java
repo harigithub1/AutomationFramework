@@ -29,7 +29,7 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGParallelRunner1Online {
+public class TestNGParallelRunner2Web {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
@@ -52,7 +52,6 @@ public class TestNGParallelRunner1Online {
     } else {
       System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
       ThreadLocalDriver.setWebDriverThreadLocal(new ChromeDriver());
-//      ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver(caps));
     }
   }
 

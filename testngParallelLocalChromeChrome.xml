@@ -17,7 +17,7 @@
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
         <parameter name="OnlineOrMobile" value="OnlineLocal"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner1Online"/>
+            <class name="cucumber.tests.TestNGParallelRunner1Web"/>
         </classes>
     </test>
     <test name="Local Browser2">
@@ -35,7 +35,7 @@
         <!--AppiumDriver or RemoteWebDriver should be instantiated-->
         <parameter name="OnlineOrMobile" value="OnlineLocal"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner2Online"/>
+            <class name="cucumber.tests.TestNGParallelRunner2Web"/>
         </classes>
     </test>
 </suite>

@@ -14,7 +14,7 @@
         <!--below OnlineOrMobile parameter is used to decide whether AppiumDriver or RemoteWebDriver should be instantiated-->
         <parameter name="OnlineOrMobile" value="OnlineLocal"/>
         <classes>
-            <class name="cucumber.tests.TestNGSequentialRunnerOnline"/>
+            <class name="cucumber.tests.TestNGSequentialRunnerWeb"/>
         </classes>
     </test>
 </suite>
