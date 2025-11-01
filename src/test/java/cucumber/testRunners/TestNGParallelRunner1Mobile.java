@@ -22,7 +22,7 @@ import java.net.URL;
 @CucumberOptions(
         monochrome = true,
         tags = "@WikiScenario",
-        features = "src/test/java/cucumber/features",
+        features = "src/test/resources/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
         plugin = {"listener.CucumberListener", "pretty",
