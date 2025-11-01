@@ -77,7 +77,7 @@ appium
 
 ### ✅ Update Cucumber Test Runner
 - Modify tags in `src/test/java/cucumber/testRunners/*Runner.java`
-- Update thread count in TestNG XML (`testng/local.xml`)
+- Update thread count in TestNG XML (`testng/testng*.xml`)
 
 ---
 
@@ -97,7 +97,6 @@ mvn clean test -PSequentialCloudWeb
 | Description | Command |
 |-------------|---------|
 | Run with profile | `mvn clean test -P<profile>` |
-| Run specific test class | `mvn -Dtest=ClassName test` |
 
 ---
 
@@ -154,7 +153,7 @@ ssh-keygen -t rsa
 ### Push Project
 ```bash
 git add .
-git commit -m "Initial commit"
+git commit -m "commit message"
 git push origin main
 ```
 
