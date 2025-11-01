@@ -35,9 +35,6 @@ A robust **Selenium + Appium Test Automation Framework** for Web and Mobile appl
 ## 📁 Project Structure (Example)
 ```
 src
-├── main
-│   ├── java
-│   └── resources
 └── test
     ├── java
     │   └── cucumber
