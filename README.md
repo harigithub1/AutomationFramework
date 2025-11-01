@@ -173,18 +173,12 @@ ssh-keygen -t rsa
 ```bash
 git add .
 git commit -m "Initial commit"
-git push -u origin main
+git push origin main
 ```
 
 ---
 
 ## 🛠 Jira & Zephyr Integration
-- Generate API Key from Jira Account Settings  
-- Create Base64 token: `"email:api_key"`  
-- Use header:  
-  ```
-  Authorization: Basic <base64-string>
-  ```
 - ZephyrSquadCloud Rest API link1: https://support.smartbear.com/zephyr-squad-cloud/docs/api/index.html
 - ZephyrSquadCloud Rest API link2 (interactive api): https://zephyrsquad.docs.apiary.io/#reference/execution/update-execution/update-execution
 - ZephyrSquadCloud Access key and Zephyr Secret key:
