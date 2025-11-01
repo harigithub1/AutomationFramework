@@ -1,4 +1,4 @@
-package utilities;
+package api.auth;
 
 import com.thed.zephyr.cloud.rest.ZFJCloudRestClient;
 import com.thed.zephyr.cloud.rest.client.JwtGenerator;
