@@ -46,7 +46,7 @@ public class TestNGParallelRunner1Web {
     String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
     String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
     String browserStackServer = configReader.config().getProperty("BrowserStackServer");
-    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
+    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesWebCloud(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       ThreadLocalDriver.setRemoteWebDriverThreadLocal(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {

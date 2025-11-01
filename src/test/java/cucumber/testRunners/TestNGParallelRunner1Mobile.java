@@ -46,7 +46,7 @@ public class TestNGParallelRunner1Mobile {
     String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
     String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
     String browserStackServer = configReader.config().getProperty("BrowserStackServer");
-    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
+    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesMobile(deviceName, platformVersion);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
         ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));

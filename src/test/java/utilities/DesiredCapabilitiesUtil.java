@@ -1,20 +1,22 @@
 package utilities;
 
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 
 public class DesiredCapabilitiesUtil {
 
-  public DesiredCapabilities getDesiredCapabilities(String deviceName, String platformVersion) {
+  boolean isCloud = Reporter.getCurrentTestResult()
+          .getTestContext().getCurrentXmlTest()
+          .getParameter("Cloud").equalsIgnoreCase("true");
+
+  public DesiredCapabilities getDesiredCapabilitiesMobile(String deviceName, String platformVersion) {
+
     ConfigReader configReader = new ConfigReader();
     String browserStackAppURLAndroid = configReader.config().getProperty("BrowserStackAppURLAndroid");
     String browserStackAppURLIos = configReader.config().getProperty("BrowserStackAppURLIos");
-
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
-            .getParameter("Cloud").equalsIgnoreCase("true")) {
+    if (isCloud) {
       desiredCapabilities.setCapability("deviceName", deviceName);
       desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
       desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
@@ -24,7 +26,6 @@ public class DesiredCapabilitiesUtil {
       } else {
         desiredCapabilities.setCapability("app", browserStackAppURLIos);
       }
-
       desiredCapabilities.setCapability("browserstack.video", "true");
       desiredCapabilities.setCapability("project", "Mobile Automation Project");
       desiredCapabilities.setCapability("build", "Mobile Automation Build");
@@ -45,30 +46,24 @@ public class DesiredCapabilitiesUtil {
     return desiredCapabilities;
   }
 
-  public DesiredCapabilities getDesiredCapabilitiesOnline(String platform, String platformVersion, String browser) {
-    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+  public DesiredCapabilities getDesiredCapabilitiesWebCloud(String platform, String platformVersion, String browser) {
 
-    boolean isCloud = Reporter.getCurrentTestResult()
-            .getTestContext().getCurrentXmlTest()
-            .getParameter("Cloud").equalsIgnoreCase("true");
+    DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
     if (isCloud) {
       desiredCapabilities.setCapability("os", platform);
       desiredCapabilities.setCapability("os_version", platformVersion);
       desiredCapabilities.setCapability("browser", browser);
-
       if (platform.toLowerCase().contains("windows")) {
         desiredCapabilities.setCapability("resolution", "1366x768");
       } else if (platform.toLowerCase().contains("os x")) {
         desiredCapabilities.setCapability("resolution", "1280x960");
       }
-
       if (browser.equalsIgnoreCase("safari")) {
         desiredCapabilities.setCapability("browser_version", "15.1");
       } else {
         desiredCapabilities.setCapability("browser_version", "latest");
       }
-
       desiredCapabilities.setCapability("browserstack.video", "true");
       desiredCapabilities.setCapability("project", "ProjectName");
       desiredCapabilities.setCapability("build", "BuildName");
