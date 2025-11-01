@@ -11,7 +11,7 @@
         <parameter name="password" value="password@123"/>
         <parameter name="WebOrMobile" value="WebLocal"/>
         <classes>
-            <class name="cucumber.tests.TestNGSequentialRunnerWeb"/>
+            <class name="cucumber.testRunners.TestNGSequentialRunnerWeb"/>
         </classes>
     </test>
 </suite>

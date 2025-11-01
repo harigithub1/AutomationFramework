@@ -13,7 +13,7 @@
         <parameter name="password" value="password@123"/>
         <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
+            <class name="cucumber.testRunners.TestNGParallelRunner1Mobile"/>
         </classes>
     </test>
     <test name="BrowserStack iPhone 13 Pro">
@@ -27,7 +27,7 @@
         <parameter name="password" value="password@123"/>
         <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
-            <class name="cucumber.tests.TestNGParallelRunner2Mobile"/>
+            <class name="cucumber.testRunners.TestNGParallelRunner2Mobile"/>
         </classes>
     </test>
 </suite>

@@ -1,13 +1,12 @@
-package cucumber.tests;
+package cucumber.testRunners;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 import utilities.ConfigReader;
@@ -17,12 +16,9 @@ import utilities.ThreadLocalDriver;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- * This class uses multithreading to run tests parallel
- */
 @CucumberOptions(
         monochrome = true,
-        tags = "@MyntraScenario",
+        tags = "@WikiScenario",
         features = "src/test/java/cucumber/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -30,7 +26,7 @@ import java.net.URL;
                 "html:target/cucumber-reports/CucumberReport2.html",
                 "json:target/cucumber-reports/cucumber-report2.json"}
 )
-public class TestNGSequentialRunnerWeb {
+public class TestNGSequentialRunnerMobile {
 
   private TestNGCucumberRunner testNGCucumberRunner;
   private final DesiredCapabilitiesUtil desiredCapabilitiesUtil = new DesiredCapabilitiesUtil();
@@ -41,18 +37,20 @@ public class TestNGSequentialRunnerWeb {
   }
 
   @BeforeMethod
-  @Parameters({"platform", "platformVersion", "browser"})
-  public void setup(String platform, String platformVersion, String browser) throws IOException {
+  @Parameters({"deviceName", "platformVersion"})
+  public void setup(String deviceName, String platformVersion) throws IOException {
     ConfigReader configReader = new ConfigReader();
     String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
     String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
     String browserStackServer = configReader.config().getProperty("BrowserStackServer");
-    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesOnline(platform, platformVersion, browser);
+    DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(deviceName, platformVersion);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
-      ThreadLocalDriver.setRemoteWebDriverThreadLocal(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
+      if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))
+        ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
+      else
+        ThreadLocalDriver.setAppiumDriverThreadLocal(new IOSDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
-      WebDriverManager.chromedriver().setup();
-      ThreadLocalDriver.setWebDriverThreadLocal(new ChromeDriver());
+      ThreadLocalDriver.setAppiumDriverThreadLocal(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps));
     }
   }
 
@@ -74,10 +72,7 @@ public class TestNGSequentialRunnerWeb {
 
   @AfterMethod
   public synchronized void teardown() {
-    if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud"))
-      ThreadLocalDriver.getRemoteWebDriverThreadLocal().quit();
-    else
-      ThreadLocalDriver.getWebDriverThreadLocal().quit();
+    ThreadLocalDriver.getAppiumDriverThreadLocal().quit();
   }
 
   @AfterClass(alwaysRun = true)
