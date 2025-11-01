@@ -5,11 +5,10 @@ import org.testng.Reporter;
 
 public class DesiredCapabilitiesUtil {
 
-  boolean isCloud = Reporter.getCurrentTestResult()
-          .getTestContext().getCurrentXmlTest()
-          .getParameter("Cloud").equalsIgnoreCase("true");
-
   public DesiredCapabilities getDesiredCapabilitiesMobile(String deviceName, String platformVersion) {
+    boolean isCloud = Reporter.getCurrentTestResult()
+            .getTestContext().getCurrentXmlTest()
+            .getParameter("Cloud").equalsIgnoreCase("true");
 
     ConfigReader configReader = new ConfigReader();
     String browserStackAppURLAndroid = configReader.config().getProperty("BrowserStackAppURLAndroid");
@@ -47,6 +46,9 @@ public class DesiredCapabilitiesUtil {
   }
 
   public DesiredCapabilities getDesiredCapabilitiesWebCloud(String platform, String platformVersion, String browser) {
+    boolean isCloud = Reporter.getCurrentTestResult()
+            .getTestContext().getCurrentXmlTest()
+            .getParameter("Cloud").equalsIgnoreCase("true");
 
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
