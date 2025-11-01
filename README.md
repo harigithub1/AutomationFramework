@@ -38,8 +38,12 @@ src
 └── test
     ├── java
     │   └── cucumber
+    │       └── stepdefinitions
     │       └── testRunners
+    │   └── pages
+    │   └── utilities
     └── resources
+        └── features
         └── testng
 pom.xml
 README.md
