@@ -110,43 +110,24 @@ mvn clean test -PSequentialCloudWeb
 | Path | `%JAVA_HOME%\bin`, `%ANDROID_HOME%\platform-tools` |
 | ANDROID_HOME | `C:\Users\<user>\AppData\Local\Android\Sdk` |
 
-
 ---
 
 ## 🚀 Jenkins CI/CD Setup
-
-### Step 1: Configure Tools
-Set these in **Manage Jenkins → Global Tool Configuration**:
-| Tool | Path |
-|------|------|
-| JDK | `C:\Program Files\Java\jdk-17.0.2` |
-| Maven | `C:\Program Files\apache-maven-3.6.1\bin` |
-
-### Step 2: Install Plugins
-- Maven Integration Plugin  
-- Pipeline Plugin  
-- Go to "Manage Jenkins" -> "Manage Plugins" -> click "Available" tab -> enter "maven" in search box. 
-- In search results select Maven Integration plugin and click on Download Now And Install After Restart button
-
-### Step 3: Create Pipeline Job
-Example Jenkinsfile:
-```groovy
-pipeline {
-    agent any
-    tools {
-        maven 'Maven3'
-        jdk 'JDK17'
-    }
-    stages {
-        stage('Checkout') {
-            steps { git 'https://github.com/user/repo.git' }
-        }
-        stage('Test') {
-            steps { sh 'mvn clean test -Pbrowserstack' }
-        }
-    }
-}
-```
+- #### Step1: installing maven in Jenkins Agent
+  - MAVEN_HOME with C:\Program Files\apache-maven-3.6.1-bin\apache-maven-3.6.1
+  - M2_HOME with C:\Program Files\apache-maven-3.6.1-bin\apache-maven-3.6.1
+  - JAVA_HOME with C:\Program Files\Java\jdk-17.0.2
+  - Path with C:\Program Files\Java\jdk-17.0.2\bin
+  - Path with C:\Program Files\apache-maven-3.6.1-bin\apache-maven-3.6.1\bin
+- #### Step2: installing maven plugins in Jenkins
+  - Go to "Manage Jenkins" -> "Manage Plugins" -> click "Available" tab -> enter "maven" in search box.
+  - In search results select Maven Integration plugin and click on Download Now And Install After Restart button
+- #### Step3: Maven and JDK configuration in Global Tool Configuration in Jenkins
+  - #### If Step1 is done Step3 is not needed and vice versa
+  - Navigate to Global Tool Configuration
+  - Scroll down and click on Add Maven
+  - Provide name as something like Maven3, Select install automaticall checkbox, select version in the Install From Apache dropdown and Save
+- #### Step4: Creating jenkins job using pipeline
 
 ---
 
@@ -160,6 +141,7 @@ pipeline {
 - To enable developer options: About Phone->Software Information-> Tap Build Number multiple times
 - Navigate to Developer options and turn on USB debugging
 - Navigate to C:\Users\user\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb``
+
 ---
 
 ## 🐙 Git & GitHub Setup
