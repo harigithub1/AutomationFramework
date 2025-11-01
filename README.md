@@ -70,11 +70,10 @@ appium
 ```
 
 ### ✅ Execute Tests
-| Command | Description |
-|---------|-------------|
-| `mvn clean test -Plocal` | Run tests locally |
-| `mvn clean test -PandroidLocal` | Run tests on connected Android device |
-| `mvn clean test -PwebLocal` | Run Selenium Web tests on local |
+| Command | Description                                          |
+|---------|------------------------------------------------------|
+| `mvn clean test -PSequentialLocalWeb` | Run web tests locally on browser                     |
+| `mvn clean test -PSequentialLocalAndroid` | Run mobile tests locally on connected Android device |
 
 ### ✅ Update Cucumber Test Runner
 - Modify tags in `src/test/java/cucumber/testRunners/*Runner.java`
@@ -89,7 +88,7 @@ appium
 2. Add BrowserStack credentials in `config.properties` *(Do not commit credentials!)*  
 3. Run using:
 ```bash
-mvn clean test -Pbrowserstack
+mvn clean test -PSequentialCloudWeb
 ```
 
 ---
@@ -97,7 +96,6 @@ mvn clean test -Pbrowserstack
 ## ⚙ Maven Commands
 | Description | Command |
 |-------------|---------|
-| Clean & test | `mvn clean test` |
 | Run with profile | `mvn clean test -P<profile>` |
 | Run specific test class | `mvn -Dtest=ClassName test` |
 
@@ -109,8 +107,9 @@ mvn clean test -Pbrowserstack
 | Variable | Value |
 |----------|-------|
 | JAVA_HOME | `C:\Program Files\Java\jdk-17.0.2` |
-| ANDROID_HOME | `C:\Users\<user>\AppData\Local\Android\Sdk` |
 | Path | `%JAVA_HOME%\bin`, `%ANDROID_HOME%\platform-tools` |
+| ANDROID_HOME | `C:\Users\<user>\AppData\Local\Android\Sdk` |
+
 
 ---
 
@@ -126,6 +125,8 @@ Set these in **Manage Jenkins → Global Tool Configuration**:
 ### Step 2: Install Plugins
 - Maven Integration Plugin  
 - Pipeline Plugin  
+- Go to "Manage Jenkins" -> "Manage Plugins" -> click "Available" tab -> enter "maven" in search box. 
+- In search results select Maven Integration plugin and click on Download Now And Install After Restart button
 
 ### Step 3: Create Pipeline Job
 Example Jenkinsfile:
@@ -155,7 +156,10 @@ pipeline {
 | `adb devices` | List connected devices |
 | `adb install <apk>` | Install APK on device |
 | `adb uninstall <package>` | Uninstall app |
-
+- With Android Studio ADB will be installed automatically.
+- To enable developer options: About Phone->Software Information-> Tap Build Number multiple times
+- Navigate to Developer options and turn on USB debugging
+- Navigate to C:\Users\user\AppData\Local\Android\Sdk\platform-tools in command prompt and type ``adb``
 ---
 
 ## 🐙 Git & GitHub Setup
@@ -167,11 +171,8 @@ ssh-keygen -t rsa
 
 ### Push Project
 ```bash
-git init
 git add .
 git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<username>/<repo>.git
 git push -u origin main
 ```
 
@@ -184,7 +185,19 @@ git push -u origin main
   ```
   Authorization: Basic <base64-string>
   ```
-
+- ZephyrSquadCloud Rest API link1: https://support.smartbear.com/zephyr-squad-cloud/docs/api/index.html
+- ZephyrSquadCloud Rest API link2 (interactive api): https://zephyrsquad.docs.apiary.io/#reference/execution/update-execution/update-execution
+- ZephyrSquadCloud Access key and Zephyr Secret key:
+  - To generate ZephyrSquadCloud Access key and Secret key refer https://support.smartbear.com/zephyr-squad-cloud/docs/api/api-keys.html
+- Jira Account ID:
+  - Its is available in the URL after clicking on the profile link in jira.
+- Jira basic authorization token: follow below steps to generate basic authorization token for jira:
+  - Step1: Get Jira API key from Jira account settings
+  - Step2: Generate base64 encoded string of "JiraEmailID:JiraApiKey", append Basic keyword and use it as Authorization header.
+    - To generate base64 encoded string: www.base64encode.org
+    - Example: "Authorization: Basic base64-encoded-string"
+    - For detailed info follow https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/
+- Link to download Jar for interacting with Jira and ZephyrSquadCloud APIs: https://support.smartbear.com/zephyr-squad-cloud/docs/api/jwt-token.html
 ---
 
 ## ✅ Best Practices
