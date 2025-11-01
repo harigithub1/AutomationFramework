@@ -1,11 +1,11 @@
 # Automation Testing Framework
-Selenium+Appium Test Automation Framework for both Web & Moblie Applications.
+Selenium+Appium Test Automation Framework for both Web & Moblie Application testing.
 
 ## To Run Tests on Local device
 - Start appium server in command line using command ``appium``
 - For parallel testing use parallel testNG local xml files. 
   - Update Thread count in testng xml file
-- Update cucumber tag in runner class in src/test/java/cucumber/tests
+- Update cucumber tag in runner class in src/test/java/cucumber/testRunners
 
 ## Maven commands
 - ``mvn clean test -P<profile name>``
@@ -13,7 +13,7 @@ Selenium+Appium Test Automation Framework for both Web & Moblie Applications.
 ## To Run Tests on Browserstack device
 - For parallel testing use parallel testNG local xml files.
   - Update Thread count in testng xml file
-- Update cucumber tag in runner class in src/test/java/cucumber/tests
+- Update cucumber tag in runner class in src/test/java/cucumber/testRunners
 
 ## Framework Features:
 - Mobile App Testing (both local and cloud)
