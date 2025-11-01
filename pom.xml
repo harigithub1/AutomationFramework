@@ -226,16 +226,17 @@
         <testng-version>7.10.2</testng-version>
         <junit-version>4.13.2</junit-version>
         <cucumber-junit-version>7.2.3</cucumber-junit-version>
-        <lombok-version>1.18.22</lombok-version>
         <cucumber-java-version>6.10.3</cucumber-java-version>
         <cucumber-jvm-version>7.2.3</cucumber-jvm-version>
         <cucumber-core-version>6.10.3</cucumber-core-version>
-        <gherkin-version>18.1.1</gherkin-version>
         <cucumber-testng-version>6.10.3</cucumber-testng-version>
         <cucumber-picocontainer-version>7.2.3</cucumber-picocontainer-version>
         <cucumber-reporting-version>5.6.1</cucumber-reporting-version>
-        <extentreports-version>5.0.9</extentreports-version>
         <cucumber-plugin-version>7.2.3</cucumber-plugin-version>
+        <gherkin-version>18.1.1</gherkin-version>
+        <lombok-version>1.18.22</lombok-version>
+        <webdrivermanager-version>6.3.0</webdrivermanager-version>
+        <extentreports-version>5.1.2</extentreports-version>
         <rest-assured-version>4.5.0</rest-assured-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -361,7 +362,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>6.3.0</version>
+            <version>${webdrivermanager-version}</version>
         </dependency>
     </dependencies>
 </project>
