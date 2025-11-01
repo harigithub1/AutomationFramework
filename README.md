@@ -44,7 +44,7 @@ src
     │   └── utilities
     └── resources
         └── features
-        └── testng
+        └── testngxml
 pom.xml
 README.md
 ```
