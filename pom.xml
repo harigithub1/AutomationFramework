@@ -32,7 +32,7 @@
     </build>
     <profiles>
         <profile>
-            <id>testngParallelCloudAndroidAndroid</id>
+            <id>ParallelCloudAndroidAndroid</id>
             <build>
                 <plugins>
                     <plugin>
@@ -49,7 +49,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngParallelCloudChromeChrome</id>
+            <id>ParallelCloudChromeChrome</id>
             <build>
                 <plugins>
                     <plugin>
@@ -66,7 +66,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngParallelCloudIosIos</id>
+            <id>ParallelCloudIosIos</id>
             <build>
                 <plugins>
                     <plugin>
@@ -83,7 +83,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngParallelLocalAndroidAndroid</id>
+            <id>ParallelLocalAndroidAndroid</id>
             <build>
                 <plugins>
                     <plugin>
@@ -100,7 +100,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngParallelLocalChromeChrome</id>
+            <id>ParallelLocalChromeChrome</id>
             <build>
                 <plugins>
                     <plugin>
@@ -117,7 +117,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngSequentialCloudAndroid</id>
+            <id>SequentialCloudAndroid</id>
             <build>
                 <plugins>
                     <plugin>
@@ -134,7 +134,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngSequentialCloudChrome</id>
+            <id>SequentialCloudChrome</id>
             <build>
                 <plugins>
                     <plugin>
@@ -151,7 +151,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngSequentialCloudIos</id>
+            <id>SequentialCloudIos</id>
             <build>
                 <plugins>
                     <plugin>
@@ -168,7 +168,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngSequentialLocalAndroid</id>
+            <id>SequentialLocalAndroid</id>
             <build>
                 <plugins>
                     <plugin>
@@ -185,7 +185,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngSequentialLocalChrome</id>
+            <id>SequentialLocalChrome</id>
             <build>
                 <plugins>
                     <plugin>
@@ -202,7 +202,7 @@
             </build>
         </profile>
         <profile>
-            <id>testngParallelCloudChromeChromeIosAndroid</id>
+            <id>ParallelCloudChromeChromeIosAndroid</id>
             <build>
                 <plugins>
                     <plugin>
