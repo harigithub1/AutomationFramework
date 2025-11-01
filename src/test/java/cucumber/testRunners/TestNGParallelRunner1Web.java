@@ -50,9 +50,7 @@ public class TestNGParallelRunner1Web {
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       ThreadLocalDriver.setRemoteWebDriverThreadLocal(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));
     } else {
-      System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\chromedriver_win32\\chromedriver.exe");
       ThreadLocalDriver.setWebDriverThreadLocal(new ChromeDriver());
-//      ThreadLocalDriver.setTLDriverOnlineLocal(new ChromeDriver(caps));
     }
   }
 
