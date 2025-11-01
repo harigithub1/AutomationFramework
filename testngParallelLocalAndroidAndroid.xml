@@ -3,7 +3,6 @@
 
 <suite name="Test-Suite" parallel="tests" thread-count="5">
     <test name="Mobile1">
-        <!--below cloud property is used for distinguish desired capabilities between cloud and local-->
         <parameter name="Cloud" value="false"/>
         <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
         <parameter name="deviceName" value="RZ8NA0RM5GK"/>
@@ -13,14 +12,12 @@
         <!--since same user cant login in to multiple devices same time-->
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
-        <!--below OnlineOrMobile parameter is used to decide whether AppiumDriver or RemoteWebDriver should be instantiated-->
         <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner1Mobile"/>
         </classes>
     </test>
     <test name="Mobile2">
-        <!--below cloud property is used for distinguish desired capabilities between cloud and local-->
         <parameter name="Cloud" value="false"/>
         <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
         <parameter name="deviceName" value="RZ8NC07WQNP"/>
@@ -30,7 +27,6 @@
         <!--since same user cant login in to multiple devices same time-->
         <parameter name="username" value="abc@gmail.com"/>
         <parameter name="password" value="password@123"/>
-        <!--below OnlineOrMobile parameter is used to decide whether AppiumDriver or RemoteWebDriver should be instantiated-->
         <parameter name="WebOrMobile" value="Mobile"/>
         <classes>
             <class name="cucumber.tests.TestNGParallelRunner2Mobile"/>
