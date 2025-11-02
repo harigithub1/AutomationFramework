@@ -4,21 +4,6 @@ A robust **Selenium + Appium Test Automation Framework** for Web and Mobile appl
 
 ---
 
-## 📌 Table of Contents
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Running Tests Locally](#running-tests-locally)
-- [Running Tests on BrowserStack](#running-tests-on-browserstack)
-- [Maven Commands](#maven-commands)
-- [Environment Setup](#environment-setup)
-- [Jenkins CI/CD Setup](#jenkins-cicd-setup)
-- [ADB Commands](#adb-commands)
-- [Git & GitHub Setup](#git--github-setup)
-- [Jira & Zephyr Integration](#jira--zephyr-integration)
-
----
-
 ## ✅ Features
 - 🌐 **Web Automation** (Local & Cloud)
 - 📱 **Mobile Automation (Android/iOS)** (Local & Cloud) using Appium
