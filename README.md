@@ -91,8 +91,6 @@ mvn clean test -PSequentialCloudWeb
 ### 🖥 System Variables (Windows)
 | Variable | Value |
 |----------|-------|
-| JAVA_HOME | `C:\Program Files\Java\jdk-17.0.2` |
-| Path | `%JAVA_HOME%\bin`, `%ANDROID_HOME%\platform-tools` |
 | ANDROID_HOME | `C:\Users\<user>\AppData\Local\Android\Sdk` |
 
 ---
