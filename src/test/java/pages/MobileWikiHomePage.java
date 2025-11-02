@@ -3,6 +3,7 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MobileWikiHomePage extends BaseScreenMobile {
     public MobileWikiHomePage(AppiumDriver driver) {
@@ -46,8 +47,12 @@ public class MobileWikiHomePage extends BaseScreenMobile {
      */
     @SneakyThrows
     public void userOnWikiHomePage() {
-        waitAndClick(Ok());
-        waitAndClick(allow());
+        if(elementDisplayed(Ok())) {
+            waitAndClick(Ok());
+        }
+        if(elementDisplayed(allow())) {
+            waitAndClick(allow());
+        }
     }
 
     @SneakyThrows

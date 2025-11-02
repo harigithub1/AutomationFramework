@@ -52,7 +52,7 @@ README.md
 
 ### ✅ Start Appium Server
 ```bash
-appium
+appium --address 127.0.0.1 --port 4723
 ```
 
 ### ✅ Execute Tests
@@ -117,11 +117,11 @@ mvn clean test -PSequentialCloudWeb
 ---
 
 ## 🔌 ADB Commands
-| Command | Description |
-|---------|-------------|
-| `adb devices` | List connected devices |
-| `adb install <apk>` | Install APK on device |
-| `adb uninstall <package>` | Uninstall app |
+| Command                                                            | Description |
+|--------------------------------------------------------------------|-------------|
+| `adb devices`                                                      | List connected devices |
+| `adb -s <device_id> install C:\Users\user\Downloads\<appname>.apk` | Install APK on device |
+| `adb uninstall <package>`                                          | Uninstall app |
 - With Android Studio ADB will be installed automatically.
 - To enable developer options: About Phone->Software Information-> Tap Build Number multiple times
 - Navigate to Developer options and turn on USB debugging

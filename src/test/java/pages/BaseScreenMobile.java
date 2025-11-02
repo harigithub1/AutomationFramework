@@ -30,4 +30,16 @@ public class BaseScreenMobile {
     protected void waitAndClick(By by) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by)).click();
     }
+
+    public boolean elementDisplayed(By by){
+        boolean b = false;
+        try {
+            if(wait.until(ExpectedConditions.visibilityOfElementLocated(by)).isDisplayed()) {
+                b = true;
+            }
+        } catch (Exception e){
+            b = false;
+        }
+        return b;
+    }
 }

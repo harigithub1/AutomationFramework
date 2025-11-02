@@ -2,10 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Test-Suite" parallel="tests" thread-count="5">
-    <test name="Mobile1">
+    <test name="Pixel 9">
         <parameter name="Cloud" value="false"/>
-        <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
-        <parameter name="deviceName" value="RZ8NA0RM5GK"/>
+        <parameter name="deviceName" value="emulator-5554"/>
         <parameter name="platform" value="android"/>
         <parameter name="platformVersion" value="12.0"/>
         <!--user credentials should be provided through testng xml files for parallel run-->
@@ -17,12 +16,11 @@
             <class name="cucumber.testRunners.TestNGParallelRunner1Mobile"/>
         </classes>
     </test>
-    <test name="Mobile2">
+    <test name="Pixel 9 Pro XL">
         <parameter name="Cloud" value="false"/>
-        <!--udid value(eg:RZ8NA0RM5GK) should be given in deviceName parameter in case of local testing-->
-        <parameter name="deviceName" value="RZ8NC07WQNP"/>
+        <parameter name="deviceName" value="emulator-5556"/>
         <parameter name="platform" value="android"/>
-        <parameter name="platformVersion" value="11.0"/>
+        <parameter name="platformVersion" value="12.0"/>
         <!--user credentials should be provided through testng xml files for parallel run-->
         <!--since same user cant login in to multiple devices same time-->
         <parameter name="username" value="abc@gmail.com"/>
