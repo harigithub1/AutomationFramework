@@ -21,7 +21,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@MyntraScenario",
+        tags = "@excel",
         features = "src/test/resources/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
