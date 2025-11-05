@@ -22,11 +22,12 @@ public class ExcelSteps {
         ThreadLocalDriver.getWebDriverThreadLocal().get("https://rimcentral5.rimsys.io/");
     }
 
-    @Then("I should have {int} states")
+    @Then("I should have {int} products")
     public void i_should_have_count_states(Integer expected) {
         int count=0;
         for (String s : states){
             System.out.println(s);
+            //verify products code
             count++;
         }
         System.out.println("count "+count);
