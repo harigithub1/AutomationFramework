@@ -2,7 +2,6 @@ package cucumber.stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import utilities.ExcelUtil;
 import utilities.ThreadLocalDriver;
 
@@ -10,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ExcelSteps {
+public class DataValidationStepDefinitions {
 
     private List<String> states;
 

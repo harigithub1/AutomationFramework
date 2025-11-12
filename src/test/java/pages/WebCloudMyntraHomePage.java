@@ -21,8 +21,7 @@ public class WebCloudMyntraHomePage extends BaseScreenWeb {
      * Actions
      */
     public void userOnHomePage() {
-        ConfigReader configReader = new ConfigReader();
-        String onlineUrl = configReader.config().getProperty("OnlineUrl");
+        String onlineUrl = ConfigReader.get("OnlineUrl");
         ThreadLocalDriver.getRemoteWebDriverThreadLocal().get(onlineUrl);
 //      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebCloud()).build());
     }

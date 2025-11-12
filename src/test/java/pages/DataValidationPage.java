@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import utilities.ConfigReader;
 import utilities.ThreadLocalDriver;
 
-public class WebLocalMyntraHomePage extends BaseScreenWeb {
-  public WebLocalMyntraHomePage(WebDriver driver) {super(driver);}
+public class DataValidationPage extends BaseScreenWeb {
+  public DataValidationPage(WebDriver driver) {super(driver);}
 
   /**
    * Web Elements
