@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.ConfigReader;
 
 import java.time.Duration;
 import java.util.List;
@@ -16,7 +17,7 @@ public class BaseScreenMobile {
 
     public BaseScreenMobile(AppiumDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(ConfigReader.get("waitTime"))));
     }
 
     protected boolean isAndroid() {

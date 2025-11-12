@@ -1,42 +1,63 @@
 package cucumber.stepdefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.testng.Reporter;
+import utilities.ConfigReader;
 import utilities.ExcelUtil;
 import utilities.ThreadLocalDriver;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class DataValidationStepDefinitions {
+public class DataValidationStepDefinitions extends BaseSteps{
 
-    private List<String> states;
+    boolean mobile = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile");
+    boolean webCloud = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud");
 
-    @Given("I read the {string} sheet column {string} from {string}")
-    public void i_read_the_sheet_column_from(String sheetName, String columnHeader, String fileName) throws Exception {
-        Path excelPath = Paths.get(System.getProperty("user.dir"),"\\src\\test\\resources\\excelfiles\\"+ fileName);
-        ExcelUtil excel = new ExcelUtil(excelPath);
-        states = excel.getColumn(sheetName, columnHeader);
-        ThreadLocalDriver.getWebDriverThreadLocal().get("https://rimcentral5.rimsys.io/");
-    }
-
-    @Then("I should have {int} products")
-    public void i_should_have_count_states(Integer expected) {
-        int count=0;
-        for (String s : states){
-            System.out.println(s);
-            //verify products code
-            count++;
+    @Before
+    public void setupLoginSteps() {
+        if (mobile) {
+            //mobile code - for both cloud/local
+            setupScreensMobile(ThreadLocalDriver.getAppiumDriverThreadLocal());
+        } else if (webCloud) {
+            //web code - for cloud
+            setupScreensWebCloud(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
+        } else {
+            //web code - for local
+            setupScreensWebLocal(ThreadLocalDriver.getWebDriverThreadLocal());
         }
-        System.out.println("count "+count);
     }
 
-    @Then("the list should include {string} and {string}")
-    public void the_list_should_include_and(String s1, String s2) {
-/*
-        Assert.assertTrue("Missing " + s1, states.contains(s1));
-        Assert.assertTrue("Missing " + s2, states.contains(s2));
-*/
+    @Given("user is navigated to registration page")
+    public void userIsNavigatedToRegistrationPage() throws InterruptedException {
+        dataValidationPage.launchURL();
+        Thread.sleep(5000);
+        dataValidationPage.clickLoginButton();
+        dataValidationPage.enterEmail("santosh.mangalapalli@rimsys.io");
+        dataValidationPage.clickNextButton();
+        dataValidationPage.enterPassword("@Pple1726");
+        dataValidationPage.clickSignInButton();
+        dataValidationPage.clickYesButton();
+        dataValidationPage.clickCompany("Philips");
+        dataValidationPage.clickSearchButton();
+        dataValidationPage.clickAuthTab();
+        dataValidationPage.enterLoginReason("test");
+        dataValidationPage.clickAdministratorButton();
+        dataValidationPage.clickGridIcon();
+        dataValidationPage.clickAllRegistrationsLink();
+    }
+
+    @When("user searches with {string}")
+    public void userSearchesWith(String columnHeader) throws IOException {
+        dataValidationPage.searchAndVerifyProducts(columnHeader);
+    }
+
+    @Then("data should be displayed correctly")
+    public void dataShouldBeDisplayedCorrectly() {
     }
 }
